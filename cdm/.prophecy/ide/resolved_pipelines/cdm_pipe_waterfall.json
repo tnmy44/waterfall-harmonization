@@ -1,0 +1,65 @@
+{
+  "id" : "cdm_pipe_waterfall",
+  "metainfo" : {
+    "label" : "cdm_pipe_waterfall",
+    "autoLayout" : false,
+    "version" : 1,
+    "configuration" : {
+      "schema" : {
+        "type" : "record",
+        "fields" : [ ]
+      }
+    },
+    "schedule" : {
+      "cron" : "* 0 2 * * * *",
+      "timeZone" : "GMT",
+      "emailOnSuccess" : false,
+      "emailOnFailure" : false,
+      "emailOnStart" : false,
+      "emails" : [ "email@gmail.com" ],
+      "enabled" : false
+    },
+    "sensorSchedule" : {
+      "enabled" : false,
+      "isDefaultView" : false,
+      "triggers" : { }
+    },
+    "isTranspiledPipeline" : false,
+    "publishDiagnosticMetrics" : false
+  },
+  "processes" : {
+    "bDmcMfzNdZzemA3Eq6Rzw$$RZL97IADDwbq9rKva-p2h" : {
+      "id" : "bDmcMfzNdZzemA3Eq6Rzw$$RZL97IADDwbq9rKva-p2h",
+      "component" : "Dataset",
+      "metadata" : {
+        "label" : "all_cols",
+        "x" : -280,
+        "y" : -280,
+        "phase" : 0,
+        "comment" : "Retrieves all columns from the waterfall harmonizer dataset for further processing.",
+        "autoUpdateComment" : true
+      },
+      "properties" : {
+        "table" : {
+          "name" : "all_cols",
+          "sourceType" : "Table",
+          "sourceName" : "waterfall_harmonizer_cdm",
+          "alias" : ""
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "0dtkYn0X7FNUbMoId0fj0$$7W9Q0kFTjgZbk5-ypdku-",
+          "slug" : "in"
+        } ],
+        "outputs" : [ {
+          "id" : "sR2f8PmZY8IjamyAm0b0e$$jo44wb0LHXjYblREgiuCP",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ ],
+  "component" : "Pipeline"
+}

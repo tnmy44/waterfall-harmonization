@@ -1,0 +1,1188 @@
+name: waterfall_cdm
+description: ''
+version: 0.0.1
+author: tanmay@prophecy.io
+language: sql
+buildSystem: ''
+buildSystemDetails: null
+pipelines: {}
+datasets: {}
+templates: {}
+jobs: {}
+gemContainer:
+  languageVersion: ''
+  gemLibsVersion: ''
+  gems: {}
+  dependencies: null
+functions:
+  author: null
+  createdAt: '2025-11-30 12:04:14'
+  udfs: {}
+  udafs: {}
+  expressions: {}
+  airflowFunctions: {}
+  businessRules: {}
+subgraphs: {}
+sqlModels: {}
+sqlSnapshots: {}
+sqlTests: {}
+sqlMacros:
+  .prophecy/metadata/sqlmacros/generate_schema_name:
+    name: generate_schema_name
+    macroType: expression
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - macros/generate_schema_name.sql
+    - .prophecy/ide/macros/generate_schema_name.json
+    createdAt: '2025-11-30 12:04:19'
+  .prophecy/metadata/sqlmacros/prophecy_tmp_source:
+    name: prophecy_tmp_source
+    macroType: expression
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - macros/prophecy_tmp_source.sql
+    - .prophecy/ide/macros/prophecy_tmp_source.json
+    createdAt: '2025-11-30 12:04:41'
+sqlSeeds: {}
+sqlSources:
+  .prophecy/metadata/sqlsources/waterfall_harmonizer_cdm:
+    name: waterfall_harmonizer_cdm
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - prophecy-sources/sources.yml
+    createdAt: '2025-11-30 13:21:38'
+    tables:
+    - name: all_cols
+      schema:
+        entityType: ''
+        providerType: databricks
+        fields:
+        - name: Seller Loan ID
+          dataType:
+            type: Integer
+        - name: Deal Name
+          dataType:
+            type: String
+      description: null
+      author: tanmay@prophecy.io
+      createdAt: '2025-11-30 13:21:38'
+      tableType: table
+    - name: gsmbs_raw_source
+      schema:
+        entityType: ''
+        providerType: databricks
+        fields:
+        - name: As of Date
+          dataType:
+            type: Date
+        - name: Primary Servicer
+          dataType:
+            type: String
+        - name: Servicing Fee-Percentage
+          dataType:
+            type: String
+        - name: Servicing Fee-Flat Dollar
+          dataType:
+            type: String
+        - name: Servicing Advance Methodology
+          dataType:
+            type: String
+        - name: Originator
+          dataType:
+            type: String
+        - name: Loan Group
+          dataType:
+            type: String
+        - name: Loan Number
+          dataType:
+            type: Bigint
+        - name: Amortization Type
+          dataType:
+            type: Bigint
+        - name: Lien Position
+          dataType:
+            type: Bigint
+        - name: Heloc Indicator
+          dataType:
+            type: Boolean
+        - name: Loan Purpose
+          dataType:
+            type: Bigint
+        - name: Cash Out Amount
+          dataType:
+            type: Double
+        - name: Total Origination and Discount Points (in dollars)
+          dataType:
+            type: Double
+        - name: Covered/High Cost Loan Indicator
+          dataType:
+            type: Boolean
+        - name: Relocation Loan Indicator
+          dataType:
+            type: Boolean
+        - name: Broker Indicator
+          dataType:
+            type: Boolean
+        - name: Channel
+          dataType:
+            type: String
+        - name: Escrow Indicator
+          dataType:
+            type: Bigint
+        - name: Senior Loan Amount(s)
+          dataType:
+            type: Double
+        - name: Loan Type of Most Senior Lien
+          dataType:
+            type: Bigint
+        - name: Hybrid Period of Most Senior Lien (in months)
+          dataType:
+            type: Bigint
+        - name: Neg Am Limit of Most Senior Lien
+          dataType:
+            type: String
+        - name: Junior Mortgage Balance
+          dataType:
+            type: Double
+        - name: Origination Date of Most Senior Lien
+          dataType:
+            type: Date
+        - name: Origination Date
+          dataType:
+            type: Date
+        - name: Original Loan Amount
+          dataType:
+            type: Double
+        - name: Original Interest Rate
+          dataType:
+            type: Double
+        - name: Original Amortization Term
+          dataType:
+            type: Bigint
+        - name: Original Term to Maturity
+          dataType:
+            type: Bigint
+        - name: First Payment Date of Loan
+          dataType:
+            type: Date
+        - name: Interest Type Indicator
+          dataType:
+            type: Bigint
+        - name: Original Interest Only Term
+          dataType:
+            type: Bigint
+        - name: Buy Down Period
+          dataType:
+            type: String
+        - name: HELOC Draw Period
+          dataType:
+            type: Bigint
+        - name: Current Loan Amount
+          dataType:
+            type: Double
+        - name: Current Interest Rate
+          dataType:
+            type: Double
+        - name: Current Payment Amount Due
+          dataType:
+            type: Double
+        - name: Paid Through Date
+          dataType:
+            type: Date
+        - name: Current Payment Status
+          dataType:
+            type: Boolean
+        - name: Index Type
+          dataType:
+            type: Bigint
+        - name: ARM Look-back Days
+          dataType:
+            type: String
+        - name: Gross Margin
+          dataType:
+            type: Double
+        - name: ARM Round Flag
+          dataType:
+            type: Bigint
+        - name: ARM Round Factor
+          dataType:
+            type: Double
+        - name: Initial Fixed Rate Period
+          dataType:
+            type: String
+        - name: Initial Interest Rate Cap (Change Up)
+          dataType:
+            type: Double
+        - name: Initial Interest Rate Cap (Change Down)
+          dataType:
+            type: Double
+        - name: Subsequent Interest Rate Reset Period
+          dataType:
+            type: Boolean
+        - name: Subsequent Interest Rate (Change Down)
+          dataType:
+            type: String
+        - name: Subsequent Interest Rate Cap (Change Up)
+          dataType:
+            type: String
+        - name: Lifetime Maximum Rate (Ceiling)
+          dataType:
+            type: Double
+        - name: Lifetime Minimum Rate (Floor)
+          dataType:
+            type: Double
+        - name: Negative Amortization Limit
+          dataType:
+            type: String
+        - name: Initial Negative Amortization Recast Period
+          dataType:
+            type: String
+        - name: Subsequent Negative Amortization Recast Period
+          dataType:
+            type: String
+        - name: Initial Fixed Payment Period
+          dataType:
+            type: String
+        - name: Subsequent Payment Reset Period
+          dataType:
+            type: String
+        - name: Initial Periodic Payment Cap
+          dataType:
+            type: String
+        - name: Subsequent Periodic Payment Cap
+          dataType:
+            type: String
+        - name: Initial Minimum Payment Reset Period
+          dataType:
+            type: String
+        - name: Subsequent Minimum Payment Reset Period
+          dataType:
+            type: String
+        - name: Option ARM Indicator
+          dataType:
+            type: Boolean
+        - name: Options at Recast
+          dataType:
+            type: String
+        - name: Initial Minimum Payment
+          dataType:
+            type: String
+        - name: Current Minimum Payment
+          dataType:
+            type: String
+        - name: Prepayment Penalty Calculation
+          dataType:
+            type: String
+        - name: Prepayment Penalty Type
+          dataType:
+            type: String
+        - name: Prepayment Penalty Total Term
+          dataType:
+            type: String
+        - name: Prepayment Penalty Hard Term
+          dataType:
+            type: String
+        - name: Primary Borrower ID
+          dataType:
+            type: String
+        - name: Number of Mortgaged Properties
+          dataType:
+            type: Bigint
+        - name: Total Number of Borrowers
+          dataType:
+            type: Bigint
+        - name: Self-employment Flag
+          dataType:
+            type: Boolean
+        - name: Current 'Other' Monthly Payment
+          dataType:
+            type: Double
+        - name: 'Length of Employment: Borrower'
+          dataType:
+            type: Double
+        - name: 'Length of Employment: Co-Borrower'
+          dataType:
+            type: Double
+        - name: Years in Home
+          dataType:
+            type: Double
+        - name: FICO Model Used
+          dataType:
+            type: Boolean
+        - name: Most Recent FICO Date
+          dataType:
+            type: Date
+        - name: 'Primary Wage Earner Original FICO: Equifax'
+          dataType:
+            type: Bigint
+        - name: 'Primary Wage Earner Original FICO: Experian'
+          dataType:
+            type: Bigint
+        - name: 'Primary Wage Earner Original FICO: TransUnion'
+          dataType:
+            type: Bigint
+        - name: 'Secondary Wage Earner Original FICO: Equifax'
+          dataType:
+            type: Bigint
+        - name: 'Secondary Wage Earner Original FICO: Experian'
+          dataType:
+            type: Bigint
+        - name: 'Secondary Wage Earner Original FICO: TransUnion'
+          dataType:
+            type: Bigint
+        - name: Most Recent Primary Borrower FICO
+          dataType:
+            type: Bigint
+        - name: Most Recent Co-Borrower FICO
+          dataType:
+            type: Bigint
+        - name: Most Recent FICO Method
+          dataType:
+            type: Bigint
+        - name: 'VantageScore: Primary Borrower'
+          dataType:
+            type: String
+        - name: 'VantageScore: Co-Borrower'
+          dataType:
+            type: String
+        - name: Most Recent Vantagescore Method
+          dataType:
+            type: String
+        - name: Vantagescore Date
+          dataType:
+            type: String
+        - name: 'Credit Report: Longest Trade Line'
+          dataType:
+            type: Bigint
+        - name: 'Credit Report: Maximum Trade Line'
+          dataType:
+            type: Double
+        - name: 'Credit Report: Number of Trade Lines'
+          dataType:
+            type: Bigint
+        - name: Credit Line Usage Ratio
+          dataType:
+            type: Double
+        - name: Most Recent 24-month Pay History
+          dataType:
+            type: Double
+        - name: Months Bankruptcy
+          dataType:
+            type: Bigint
+        - name: Months Foreclosure
+          dataType:
+            type: String
+        - name: Primary Borrower Wage Income
+          dataType:
+            type: Double
+        - name: Co-Borrower Wage Income
+          dataType:
+            type: Double
+        - name: Primary Borrower Other Income
+          dataType:
+            type: Double
+        - name: Co-Borrower Other Income
+          dataType:
+            type: Double
+        - name: All Borrower Wage Income
+          dataType:
+            type: Double
+        - name: All Borrower Total Income
+          dataType:
+            type: Double
+        - name: 4506-T Indicator
+          dataType:
+            type: Boolean
+        - name: Borrower Income Verification Level
+          dataType:
+            type: Bigint
+        - name: Co-Borrower Income Verification
+          dataType:
+            type: Bigint
+        - name: Borrower Employment Verification
+          dataType:
+            type: Bigint
+        - name: Co-Borrower Employment Verification
+          dataType:
+            type: Bigint
+        - name: Borrower Asset Verification
+          dataType:
+            type: Bigint
+        - name: Co-Borrower Asset Verification
+          dataType:
+            type: Bigint
+        - name: Liquid / Cash Reserves
+          dataType:
+            type: Double
+        - name: Monthly Debt All Borrowers
+          dataType:
+            type: Double
+        - name: Originator DTI
+          dataType:
+            type: Double
+        - name: Fully Indexed Rate
+          dataType:
+            type: Double
+        - name: Qualification Method
+          dataType:
+            type: Bigint
+        - name: Percentage of Down Payment From Borrower Own Funds
+          dataType:
+            type: Boolean
+        - name: City
+          dataType:
+            type: String
+        - name: State
+          dataType:
+            type: String
+        - name: Postal Code
+          dataType:
+            type: Bigint
+        - name: Property Type
+          dataType:
+            type: Bigint
+        - name: Occupancy
+          dataType:
+            type: Bigint
+        - name: Sales Price
+          dataType:
+            type: Bigint
+        - name: Original Appraised Property Value
+          dataType:
+            type: Bigint
+        - name: Original Property Valuation Type
+          dataType:
+            type: Bigint
+        - name: Original Property Valuation Date
+          dataType:
+            type: Date
+        - name: Original Automated Valuation Model (AVM) Model Name
+          dataType:
+            type: Bigint
+        - name: Original AVM Confidence Score
+          dataType:
+            type: Double
+        - name: Most Recent Property Value
+          dataType:
+            type: Bigint
+        - name: Most Recent Property Valuation Type
+          dataType:
+            type: Bigint
+        - name: Most Recent Property Valuation Date
+          dataType:
+            type: Date
+        - name: Most Recent AVM Model Name
+          dataType:
+            type: Bigint
+        - name: Most Recent AVM Confidence Score
+          dataType:
+            type: Double
+        - name: Original CLTV
+          dataType:
+            type: Double
+        - name: Original LTV
+          dataType:
+            type: Double
+        - name: Original Pledged Assets
+          dataType:
+            type: String
+        - name: Mortgage Insurance Company Name
+          dataType:
+            type: String
+        - name: Mortgage Insurance Percent
+          dataType:
+            type: String
+        - name: 'MI: Lender or Borrower Paid?'
+          dataType:
+            type: String
+        - name: Pool Insurance Co. Name
+          dataType:
+            type: String
+        - name: Pool Insurance Stop Loss %
+          dataType:
+            type: String
+        - name: MI Certificate Number
+          dataType:
+            type: String
+        - name: Updated DTI (Front-end)
+          dataType:
+            type: String
+        - name: Updated DTI (Back-end)
+          dataType:
+            type: String
+        - name: Modification Effective Payment Date
+          dataType:
+            type: String
+        - name: Total Capitalized Amount
+          dataType:
+            type: String
+        - name: Total Deferred Amount
+          dataType:
+            type: Boolean
+        - name: Pre-Modification Interest (Note) Rate
+          dataType:
+            type: String
+        - name: Pre-Modification P&I Payment
+          dataType:
+            type: String
+        - name: Pre-Modification Initial Interest Rate Change Downward Cap
+          dataType:
+            type: String
+        - name: Pre-Modification Subsequent Interest Rate Cap
+          dataType:
+            type: String
+        - name: Pre-Modification Next Interest Rate Change Date
+          dataType:
+            type: String
+        - name: Pre-Modification I/O Term
+          dataType:
+            type: String
+        - name: Forgiven Principal Amount
+          dataType:
+            type: String
+        - name: Forgiven Interest Amount
+          dataType:
+            type: String
+        - name: Number of Modifications
+          dataType:
+            type: String
+        - name: 'Supplemental Field: TILA Status'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Seller'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Primary Wage Earner Refreshed FICO Experian'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Primary Wage Earner Refreshed FICO Equifax'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Primary Wage Earner Refreshed FICO Transunion'
+          dataType:
+            type: Bigint
+        - name: 'Supplemental Field: Primary Wage Earner Refreshed Median FICO'
+          dataType:
+            type: Bigint
+        - name: 'Supplemental Field: Primary Wage Earner Refreshed FICO Date'
+          dataType:
+            type: Date
+        - name: 'Supplemental Field: Secondary Wage Earner Refreshed FICO Experian'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Secondary Wage Earner Refreshed FICO Equifax'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Secondary Wage Earner Refreshed FICO Transunion'
+          dataType:
+            type: Bigint
+        - name: 'Supplemental Field: Secondary Wage Earner Refreshed Median FICO'
+          dataType:
+            type: Bigint
+        - name: 'Supplemental Field: Secondary Wage Earner Refreshed FICO Date'
+          dataType:
+            type: Date
+        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed FICO Experian'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed FICO Equifax'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed FICO Transunion'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed Median FICO'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed FICO Date'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed FICO Experian'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed FICO Equifax'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed FICO Transunion'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed Median FICO'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed FICO Date'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Collateral Type'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Documentation Type'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Third Party Originator (Correspondent Channel)'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Third Party Originator Channel (Correspondent
+            Channel)'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Servicing Transfer Date'
+          dataType:
+            type: Date
+        - name: Maturity Date
+          dataType:
+            type: Date
+        - name: 'Supplemental Field: COVID FB Request Flag'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: COVID FB Start Dt'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: COVID FB Active Flag'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: COVID FB End Dt'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Application Date'
+          dataType:
+            type: Date
+        - name: 'Supplemental Field: Existing Corporate Advance'
+          dataType:
+            type: Double
+        - name: 'Supplemental Field: Existing Escrow Advance'
+          dataType:
+            type: Double
+        - name: 'Supplemental Field: Initial HELOC Draw Amount'
+          dataType:
+            type: Double
+        - name: 'Supplemental Field: HELOC Status'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Utilization %'
+          dataType:
+            type: Double
+        - name: 'Supplemental Field: Tertiary Borrower Income Verification'
+          dataType:
+            type: Bigint
+        - name: 'Supplemental Field: Quaternary Borrower Income Verification'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Tertiary Borrower Employment Verification'
+          dataType:
+            type: Bigint
+        - name: 'Supplemental Field: Quaternary Borrower Employment Verification'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Tertiary Borrower Asset Verification'
+          dataType:
+            type: Boolean
+        - name: 'Supplemental Field: Quaternary Borrower Asset Verification'
+          dataType:
+            type: String
+        - name: 'Supplemental Field: Interest Paid Through Date'
+          dataType:
+            type: Date
+        - name: 'Supplemental Field: Original Qualifying FICO'
+          dataType:
+            type: Bigint
+        - name: 'Supplemental Field: Current FICO'
+          dataType:
+            type: Bigint
+        - name: 'Supplemental Field: Current Maturity Date'
+          dataType:
+            type: Date
+        - name: 'Supplemental Field: Senior Lien Note Rate'
+          dataType:
+            type: Double
+        - name: 'Supplemental Field: Step Rate 1'
+          dataType:
+            type: Double
+        - name: 'Supplemental Field: Step Date 1'
+          dataType:
+            type: Date
+        - name: 'Supplemental Field: Mod_flag'
+          dataType:
+            type: String
+      description: null
+      author: tanmay@prophecy.io
+      createdAt: '2025-11-30 15:24:22'
+      tableType: table
+    - name: gsmbs_expected_output
+      schema:
+        entityType: ''
+        providerType: databricks
+        fields:
+        - name: "﻿Seller Loan ID"
+          dataType:
+            type: Bigint
+        - name: Issuer Loan Number
+          dataType:
+            type: Bigint
+        - name: Servicer Loan Number
+          dataType:
+            type: String
+        - name: Parent Loan ID
+          dataType:
+            type: String
+        - name: Deal Name
+          dataType:
+            type: String
+        - name: As of Date
+          dataType:
+            type: String
+        - name: Orig Loan Amount
+          dataType:
+            type: Double
+        - name: Orig Loan Interest Rate
+          dataType:
+            type: Double
+        - name: Rate Type
+          dataType:
+            type: String
+        - name: Seller Product Type
+          dataType:
+            type: String
+        - name: Remaining Amortization Term
+          dataType:
+            type: Bigint
+        - name: Orig Loan Maturity Date
+          dataType:
+            type: String
+        - name: Orig Loan Term
+          dataType:
+            type: Bigint
+        - name: Curr Loan Balance
+          dataType:
+            type: Double
+        - name: Curr Loan Interest Rate
+          dataType:
+            type: Double
+        - name: Curr Loan Maturity Date
+          dataType:
+            type: String
+        - name: Origination Note Date
+          dataType:
+            type: String
+        - name: First Payment Date
+          dataType:
+            type: String
+        - name: ARM Flag
+          dataType:
+            type: Bigint
+        - name: ARM Index
+          dataType:
+            type: Bigint
+        - name: ARM Index Rate
+          dataType:
+            type: String
+        - name: ARM Initial Fixed Rate Period
+          dataType:
+            type: String
+        - name: ARM Margin
+          dataType:
+            type: Double
+        - name: Step Flag
+          dataType:
+            type: String
+        - name: Step 1 Rate
+          dataType:
+            type: String
+        - name: Step 1 Date
+          dataType:
+            type: String
+        - name: Step 2 Rate
+          dataType:
+            type: String
+        - name: Step 2 Date
+          dataType:
+            type: String
+        - name: Step 3 Rate
+          dataType:
+            type: String
+        - name: Step 3 Date
+          dataType:
+            type: String
+        - name: Step 4 Rate
+          dataType:
+            type: String
+        - name: Step 4 Date
+          dataType:
+            type: String
+        - name: Step 5 Rate
+          dataType:
+            type: String
+        - name: Step 5 Date
+          dataType:
+            type: String
+        - name: Number of Borrowers
+          dataType:
+            type: Bigint
+        - name: All Borrower Total Monthly Income
+          dataType:
+            type: Double
+        - name: All Borrower Monthly Debt
+          dataType:
+            type: Double
+        - name: Borr 1 Credit Score
+          dataType:
+            type: Bigint
+        - name: Borr 2 Credit Score
+          dataType:
+            type: Bigint
+        - name: Current FICO
+          dataType:
+            type: Bigint
+        - name: Original FICO
+          dataType:
+            type: Bigint
+        - name: Foreign National Flag
+          dataType:
+            type: Bigint
+        - name: Loan Age
+          dataType:
+            type: Bigint
+        - name: Prepayment Penalty Description
+          dataType:
+            type: String
+        - name: Prepayment Penalty Percentage
+          dataType:
+            type: String
+        - name: Prepayment Penalty Period
+          dataType:
+            type: String
+        - name: Days Delinquent
+          dataType:
+            type: Bigint
+        - name: Curr Servicer Delinquency Status
+          dataType:
+            type: String
+        - name: Prior Servicer Delinquency Status
+          dataType:
+            type: String
+        - name: Paid to Date
+          dataType:
+            type: String
+        - name: Orig Holdback Amount
+          dataType:
+            type: String
+        - name: Orig Available Line of Credit
+          dataType:
+            type: String
+        - name: LOC Current Drawn Amount
+          dataType:
+            type: String
+        - name: LOC Initial Draw Amount
+          dataType:
+            type: String
+        - name: Curr Holdback Amount
+          dataType:
+            type: String
+        - name: Principal Limit
+          dataType:
+            type: String
+        - name: Rehab Budget
+          dataType:
+            type: String
+        - name: Amount First Disbursement
+          dataType:
+            type: String
+        - name: Credit Line Usage Ratio
+          dataType:
+            type: Double
+        - name: Purchase Basis
+          dataType:
+            type: String
+        - name: Orig LTV
+          dataType:
+            type: Double
+        - name: Orig CLTV
+          dataType:
+            type: Double
+        - name: Orig Appraisal Value
+          dataType:
+            type: Bigint
+        - name: Appraisal Date
+          dataType:
+            type: String
+        - name: BPO Value
+          dataType:
+            type: Bigint
+        - name: BPO Date
+          dataType:
+            type: String
+        - name: Orig Sales Price
+          dataType:
+            type: Bigint
+        - name: Curr LTV
+          dataType:
+            type: Double
+        - name: Curr CLTV
+          dataType:
+            type: Double
+        - name: As Is Value
+          dataType:
+            type: String
+        - name: LTARV
+          dataType:
+            type: String
+        - name: LTAIV
+          dataType:
+            type: String
+        - name: LTC Fully Baked
+          dataType:
+            type: String
+        - name: Orig LTC
+          dataType:
+            type: String
+        - name: Property Latest Value
+          dataType:
+            type: Bigint
+        - name: As Repaired Value
+          dataType:
+            type: String
+        - name: Personal Guarantee
+          dataType:
+            type: String
+        - name: UW DSCR
+          dataType:
+            type: String
+        - name: Stabalized DSCR
+          dataType:
+            type: String
+        - name: Current Debt Yield
+          dataType:
+            type: String
+        - name: Stabilized Debt Yield
+          dataType:
+            type: String
+        - name: Short Term Rental Flag
+          dataType:
+            type: Bigint
+        - name: DTI Ratio
+          dataType:
+            type: Double
+        - name: Cash Out Amount
+          dataType:
+            type: Double
+        - name: Loan Purpose
+          dataType:
+            type: String
+        - name: Property Type
+          dataType:
+            type: String
+        - name: Property Year Built
+          dataType:
+            type: String
+        - name: Property Year Renovated
+          dataType:
+            type: String
+        - name: Scratch and Dent Reason
+          dataType:
+            type: String
+        - name: Cross Collateralized Flag
+          dataType:
+            type: String
+        - name: Number of Properties
+          dataType:
+            type: Bigint
+        - name: Borrower Experience Properties
+          dataType:
+            type: String
+        - name: Borrower Experience Level
+          dataType:
+            type: String
+        - name: Curr Occupancy Status
+          dataType:
+            type: String
+        - name: Orig Occupancy Status
+          dataType:
+            type: String
+        - name: Doc Type
+          dataType:
+            type: String
+        - name: Lien Position
+          dataType:
+            type: Bigint
+        - name: Known Junior Liens
+          dataType:
+            type: Double
+        - name: Senior Lien Original Balance
+          dataType:
+            type: Double
+        - name: Years in Home
+          dataType:
+            type: Double
+        - name: Senior Lien Interest Rate
+          dataType:
+            type: String
+        - name: Liquid / Cash Reserves
+          dataType:
+            type: Double
+        - name: Final Credit Grade
+          dataType:
+            type: String
+        - name: Originator Name
+          dataType:
+            type: String
+        - name: Originator Program
+          dataType:
+            type: String
+        - name: Property City
+          dataType:
+            type: String
+        - name: Property State
+          dataType:
+            type: String
+        - name: Property Street
+          dataType:
+            type: String
+        - name: Property Zip
+          dataType:
+            type: Bigint
+        - name: Servicer Name
+          dataType:
+            type: String
+        - name: Mortgage Insurance Flag
+          dataType:
+            type: String
+        - name: MI Coverage Provider
+          dataType:
+            type: String
+        - name: MI Coverage Pct
+          dataType:
+            type: String
+        - name: Modification Flag
+          dataType:
+            type: String
+        - name: Modification Type
+          dataType:
+            type: String
+        - name: Modification Date
+          dataType:
+            type: String
+        - name: Active Forbearance
+          dataType:
+            type: String
+        - name: Deferred Amount
+          dataType:
+            type: String
+        - name: Foreclosure Flag
+          dataType:
+            type: String
+        - name: Foreclosure Type
+          dataType:
+            type: String
+        - name: Initial Foreclosure Referral Date
+          dataType:
+            type: String
+        - name: Foreclosure Sale Scheduled Date
+          dataType:
+            type: String
+        - name: Foreclosure Sale Held Date
+          dataType:
+            type: String
+        - name: Escrow Advances
+          dataType:
+            type: Double
+        - name: Corprate Advances
+          dataType:
+            type: Double
+        - name: REO Flag
+          dataType:
+            type: String
+        - name: REO Conversion Date
+          dataType:
+            type: String
+        - name: Bankruptcy Flag
+          dataType:
+            type: String
+        - name: Bankruptcy Type
+          dataType:
+            type: String
+        - name: 3 Month Cashflow Velocity
+          dataType:
+            type: String
+        - name: 6 Month Cashflow Velocity
+          dataType:
+            type: String
+        - name: 12 Month Cashflow Velocity
+          dataType:
+            type: String
+        - name: 24 Month Cashflow Velocity
+          dataType:
+            type: String
+        - name: Dutch Flag
+          dataType:
+            type: String
+        - name: Num Units
+          dataType:
+            type: String
+        - name: Orig Interest Only Term
+          dataType:
+            type: Bigint
+        - name: QM Status
+          dataType:
+            type: String
+        - name: Sector
+          dataType:
+            type: String
+        - name: WAM Group
+          dataType:
+            type: String
+        - name: Ground Up Flag
+          dataType:
+            type: String
+        - name: Extended Flag
+          dataType:
+            type: String
+        - name: Number of Extensions
+          dataType:
+            type: String
+        - name: Bridge Loan Flag
+          dataType:
+            type: String
+        - name: Cap Rate
+          dataType:
+            type: String
+        - name: Asset Class
+          dataType:
+            type: String
+      description: null
+      author: tanmay@prophecy.io
+      createdAt: '2025-11-30 15:27:36'
+      tableType: table
+sqlUnreferencedSources: {}
+sqlPipeline:
+  name: sqlPipeline
+  description: null
+  author: tanmay@prophecy.io
+  createdAt: '2025-11-30 12:04:14'
+dependencies: []
+projectDependencies: {}
+flags:
+  shouldAddDefaultDependenciesIfAbsent: true
+pipelineConfigurations: {}
+projectConfigurations: {}
+sqlOrchestratorPipelines:
+  .prophecy/metadata/sqlorchestratorpipeline/cdm_pipe_waterfall:
+    name: cdm_pipe_waterfall
+    schema: null
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - .prophecy/ide/pipelines/cdm_pipe_waterfall.json
+    - pipelines/cdm_pipe_waterfall.py
+    createdAt: '2025-11-30 12:04:41'
+  .prophecy/metadata/sqlorchestratorpipeline/ref_pipe_waterfall:
+    name: ref_pipe_waterfall
+    schema: null
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - pipelines/ref_pipe_waterfall.py
+    - .prophecy/ide/pipelines/ref_pipe_waterfall.json
+    createdAt: '2025-11-30 14:24:41'
+sqlBusinessApps: {}
