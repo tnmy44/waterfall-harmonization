@@ -1,0 +1,6 @@
+---
+version: 2
+models:
+- name: "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat"
+  tags:
+  - "prophecy_temp"

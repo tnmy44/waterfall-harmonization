@@ -1,71 +1,52 @@
 {
-  "id" : "ref_pipe_waterfall",
+  "id" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat",
   "metainfo" : {
-    "label" : "ref_pipe_waterfall",
-    "autoLayout" : false,
-    "version" : 1,
-    "configuration" : {
-      "schema" : {
-        "type" : "record",
-        "fields" : [ ]
+    "label" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat",
+    "autoLayout" : true,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "entityConfig" : {
+        "materialized" : "ephemeral",
+        "database" : "\"tanmay\"",
+        "schema" : "\"default2\"",
+        "type" : "ModelConfig"
       }
     },
-    "isTranspiledPipeline" : false,
-    "publishDiagnosticMetrics" : false
+    "version" : 3
   },
   "processes" : {
-    "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm" : {
-      "id" : "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm",
-      "component" : "Dataset",
+    "as_of_date_yyyymmdd_reformat_fZv5vtZv" : {
+      "id" : "as_of_date_yyyymmdd_reformat_fZv5vtZv",
+      "component" : "TargetModel",
       "metadata" : {
-        "label" : "gsmbs_raw_source",
-        "x" : -220,
-        "y" : -260,
-        "phase" : 0
+        "label" : "as_of_date_yyyymmdd_reformat"
       },
       "properties" : {
-        "table" : {
-          "name" : "gsmbs_raw_source",
-          "sourceType" : "Table",
-          "sourceName" : "waterfall_harmonizer_cdm",
-          "alias" : ""
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "\nSELECT *\n\nFROM as_of_date_yyyymmdd_reformat\n\n",
+        "isModel" : true,
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
         }
       },
       "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "S41EjKyE",
-          "slug" : "out"
+        "inputs" : [ {
+          "id" : "input_port_0",
+          "slug" : "input_port_0"
         } ],
-        "isCustomOutputSchema" : false
+        "outputs" : [ {
+          "id" : "output_port_0",
+          "slug" : "output_port_0"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
       }
-    },
-    "gsmbs_expected_o##b50M1JHY" : {
-      "id" : "gsmbs_expected_o##b50M1JHY",
-      "component" : "Dataset",
-      "metadata" : {
-        "label" : "gsmbs_expected_output",
-        "x" : 140,
-        "y" : -280,
-        "phase" : 0
-      },
-      "properties" : {
-        "table" : {
-          "name" : "gsmbs_expected_output",
-          "sourceType" : "Table",
-          "sourceName" : "waterfall_harmonizer_cdm",
-          "alias" : ""
-        }
-      },
-      "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "Iaxk6Qv8",
-          "slug" : "out"
-        } ],
-        "isCustomOutputSchema" : false
-      },
-      "index" : 1
     },
     "as_of_date_yyyym##wNtgQcT4" : {
       "id" : "as_of_date_yyyym##wNtgQcT4",
@@ -415,16 +396,50 @@
           "id" : "fZv5vtZv",
           "slug" : "out"
         } ],
-        "isCustomOutputSchema" : false
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
+    "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm" : {
+      "id" : "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "gsmbs_raw_source",
+        "x" : -220,
+        "y" : -260,
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "gsmbs_raw_source",
+          "sourceType" : "Table",
+          "sourceName" : "waterfall_harmonizer_cdm",
+          "alias" : ""
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "S41EjKyE",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
       }
     }
   },
   "connections" : [ {
+    "id" : "conn_as_of_date_yyyym##wNtgQcT4_fZv5vtZv_as_of_date_yyyymmdd_reformat_fZv5vtZv",
+    "source" : "as_of_date_yyyym##wNtgQcT4",
+    "sourcePort" : "fZv5vtZv",
+    "target" : "as_of_date_yyyymmdd_reformat_fZv5vtZv",
+    "targetPort" : "input_port_0"
+  }, {
     "id" : "QRGX2Fsi",
     "source" : "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm",
     "sourcePort" : "S41EjKyE",
     "target" : "as_of_date_yyyym##wNtgQcT4",
     "targetPort" : "c6DiYA1a"
   } ],
-  "component" : "Pipeline"
+  "component" : "Model"
 }
