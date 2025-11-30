@@ -14,34 +14,8 @@
     "publishDiagnosticMetrics" : false
   },
   "processes" : {
-    "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm" : {
-      "id" : "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm",
-      "component" : "Dataset",
-      "metadata" : {
-        "label" : "gsmbs_raw_source",
-        "x" : -220,
-        "y" : -260,
-        "phase" : 0
-      },
-      "properties" : {
-        "table" : {
-          "name" : "gsmbs_raw_source",
-          "sourceType" : "Table",
-          "sourceName" : "waterfall_harmonizer_cdm",
-          "alias" : ""
-        }
-      },
-      "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "S41EjKyE",
-          "slug" : "out"
-        } ],
-        "isCustomOutputSchema" : false
-      }
-    },
-    "gsmbs_expected_o##b50M1JHY" : {
-      "id" : "gsmbs_expected_o##b50M1JHY",
+    "gsmbs_expected_o##c01jzUXg" : {
+      "id" : "gsmbs_expected_o##c01jzUXg",
       "component" : "Dataset",
       "metadata" : {
         "label" : "gsmbs_expected_output",
@@ -60,12 +34,39 @@
       "ports" : {
         "inputs" : [ ],
         "outputs" : [ {
-          "id" : "Iaxk6Qv8",
+          "id" : "MDB4Vm7I",
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
       },
       "index" : 1
+    },
+    "as_of_date_yyyym##LV75Oimr" : {
+      "id" : "as_of_date_yyyym##LV75Oimr",
+      "component" : "Model",
+      "metadata" : {
+        "label" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat",
+        "phase" : 0
+      },
+      "properties" : {
+        "modelName" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat"
+      },
+      "visualMetaInfo" : {
+        "visualProcessIds" : [ "as_of_date_yyyymmdd_reformat_VCKRdeEx", "as_of_date_yyyym##LV75Oimr", "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm" ],
+        "type" : "ephemeral",
+        "isTemporaryTable" : true
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat_in_0",
+          "slug" : "in_0"
+        } ],
+        "outputs" : [ {
+          "id" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat_out_0",
+          "slug" : "out_0"
+        } ],
+        "isCustomOutputSchema" : false
+      }
     }
   },
   "connections" : [ ],
