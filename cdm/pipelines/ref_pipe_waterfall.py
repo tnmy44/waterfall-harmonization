@@ -1,14 +1,11 @@
-Schedule = Schedule(cron = "* 0 2 * * * *", timezone = "GMT", emails = ["email@gmail.com"], enabled = False)
-SensorSchedule = SensorSchedule(enabled = False)
-
-with DAG(Schedule = Schedule, SensorSchedule = SensorSchedule):
-    gsmbs_raw_source = Task(
-        task_id = "gsmbs_raw_source", 
-        component = "Dataset", 
-        table = {"name" : "gsmbs_raw_source", "sourceType" : "Table", "sourceName" : "waterfall_harmonizer_cdm", "alias" : ""}
-    )
+with DAG():
     gsmbs_expected_output = Task(
         task_id = "gsmbs_expected_output", 
         component = "Dataset", 
         table = {"name" : "gsmbs_expected_output", "sourceType" : "Table", "sourceName" : "waterfall_harmonizer_cdm", "alias" : ""}
+    )
+    ref_pipe_waterfall__as_of_date_yyyymmdd_reformat = Task(
+        task_id = "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat", 
+        component = "Model", 
+        modelName = "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat"
     )

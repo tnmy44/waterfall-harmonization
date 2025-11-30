@@ -1,71 +1,52 @@
 {
-  "id" : "ref_pipe_waterfall",
+  "id" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat",
   "metainfo" : {
-    "label" : "ref_pipe_waterfall",
-    "autoLayout" : false,
-    "version" : 1,
-    "configuration" : {
-      "schema" : {
-        "type" : "record",
-        "fields" : [ ]
+    "label" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat",
+    "autoLayout" : true,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "entityConfig" : {
+        "materialized" : "ephemeral",
+        "database" : "\"tanmay\"",
+        "schema" : "\"default2\"",
+        "type" : "ModelConfig"
       }
     },
-    "isTranspiledPipeline" : false,
-    "publishDiagnosticMetrics" : false
+    "version" : 3
   },
   "processes" : {
-    "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm" : {
-      "id" : "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm",
-      "component" : "Dataset",
+    "as_of_date_yyyymmdd_reformat_YZSEckKO" : {
+      "id" : "as_of_date_yyyymmdd_reformat_YZSEckKO",
+      "component" : "TargetModel",
       "metadata" : {
-        "label" : "gsmbs_raw_source",
-        "x" : -220,
-        "y" : -260,
-        "phase" : 0
+        "label" : "as_of_date_yyyymmdd_reformat"
       },
       "properties" : {
-        "table" : {
-          "name" : "gsmbs_raw_source",
-          "sourceType" : "Table",
-          "sourceName" : "waterfall_harmonizer_cdm",
-          "alias" : ""
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "\nSELECT *\n\nFROM as_of_date_yyyymmdd_reformat\n\n",
+        "isModel" : true,
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
         }
       },
       "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "G7tuUn0Z",
-          "slug" : "out"
+        "inputs" : [ {
+          "id" : "input_port_0",
+          "slug" : "input_port_0"
         } ],
-        "isCustomOutputSchema" : false
+        "outputs" : [ {
+          "id" : "output_port_0",
+          "slug" : "output_port_0"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
       }
-    },
-    "gsmbs_expected_o##wZDlc6KP" : {
-      "id" : "gsmbs_expected_o##wZDlc6KP",
-      "component" : "Dataset",
-      "metadata" : {
-        "label" : "gsmbs_expected_output",
-        "x" : 140,
-        "y" : -280,
-        "phase" : 0
-      },
-      "properties" : {
-        "table" : {
-          "name" : "gsmbs_expected_output",
-          "sourceType" : "Table",
-          "sourceName" : "waterfall_harmonizer_cdm",
-          "alias" : ""
-        }
-      },
-      "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "ynsauozt",
-          "slug" : "out"
-        } ],
-        "isCustomOutputSchema" : false
-      },
-      "index" : 1
     },
     "as_of_date_yyyym##ZC9OZQxM" : {
       "id" : "as_of_date_yyyym##ZC9OZQxM",
@@ -410,16 +391,50 @@
           "id" : "YZSEckKO",
           "slug" : "out"
         } ],
-        "isCustomOutputSchema" : false
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
+    "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm" : {
+      "id" : "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "gsmbs_raw_source",
+        "x" : -220,
+        "y" : -260,
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "gsmbs_raw_source",
+          "sourceType" : "Table",
+          "sourceName" : "waterfall_harmonizer_cdm",
+          "alias" : ""
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "G7tuUn0Z",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
       }
     }
   },
   "connections" : [ {
+    "id" : "conn_as_of_date_yyyym##ZC9OZQxM_YZSEckKO_as_of_date_yyyymmdd_reformat_YZSEckKO",
+    "source" : "as_of_date_yyyym##ZC9OZQxM",
+    "sourcePort" : "YZSEckKO",
+    "target" : "as_of_date_yyyymmdd_reformat_YZSEckKO",
+    "targetPort" : "input_port_0"
+  }, {
     "id" : "EzXAtxSf",
     "source" : "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm",
     "sourcePort" : "G7tuUn0Z",
     "target" : "as_of_date_yyyym##ZC9OZQxM",
     "targetPort" : "JiiAQp5c"
   } ],
-  "component" : "Pipeline"
+  "component" : "Model"
 }
