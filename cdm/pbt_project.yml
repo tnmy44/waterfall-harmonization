@@ -60,968 +60,1852 @@ sqlSources:
         entityType: ''
         providerType: databricks
         fields:
-        - name: Seller Loan ID
+        - name: 4506T Flag
+          dataType:
+            type: Boolean
+        - name: ACH Flag
+          dataType:
+            type: Boolean
+        - name: 'AM: Plan Due Date'
+          dataType:
+            type: Date
+        - name: 'AM: Plan End Date'
+          dataType:
+            type: Date
+        - name: 'AM: Plan Payment Amount'
           dataType:
             type: Integer
-        - name: Deal Name
-          dataType:
-            type: String
-      description: null
-      author: tanmay@prophecy.io
-      createdAt: '2025-11-30 13:21:38'
-      tableType: table
-    - name: gsmbs_raw_source
-      schema:
-        entityType: ''
-        providerType: databricks
-        fields:
-        - name: As of Date
+        - name: 'AM: Plan Start Date'
           dataType:
             type: Date
-        - name: Primary Servicer
-          dataType:
-            type: String
-        - name: Servicing Fee-Percentage
-          dataType:
-            type: String
-        - name: Servicing Fee-Flat Dollar
-          dataType:
-            type: String
-        - name: Servicing Advance Methodology
-          dataType:
-            type: String
-        - name: Originator
-          dataType:
-            type: String
-        - name: Loan Group
-          dataType:
-            type: String
-        - name: Loan Number
-          dataType:
-            type: Bigint
-        - name: Amortization Type
-          dataType:
-            type: Bigint
-        - name: Lien Position
-          dataType:
-            type: Bigint
-        - name: Heloc Indicator
-          dataType:
-            type: Boolean
-        - name: Loan Purpose
-          dataType:
-            type: Bigint
-        - name: Cash Out Amount
-          dataType:
-            type: Double
-        - name: Total Origination and Discount Points (in dollars)
-          dataType:
-            type: Double
-        - name: Covered/High Cost Loan Indicator
-          dataType:
-            type: Boolean
-        - name: Relocation Loan Indicator
-          dataType:
-            type: Boolean
-        - name: Broker Indicator
-          dataType:
-            type: Boolean
-        - name: Channel
-          dataType:
-            type: String
-        - name: Escrow Indicator
-          dataType:
-            type: Bigint
-        - name: Senior Loan Amount(s)
-          dataType:
-            type: Double
-        - name: Loan Type of Most Senior Lien
-          dataType:
-            type: Bigint
-        - name: Hybrid Period of Most Senior Lien (in months)
-          dataType:
-            type: Bigint
-        - name: Neg Am Limit of Most Senior Lien
-          dataType:
-            type: String
-        - name: Junior Mortgage Balance
-          dataType:
-            type: Double
-        - name: Origination Date of Most Senior Lien
+        - name: 'AM: Resolution Engaged Date'
           dataType:
             type: Date
-        - name: Origination Date
+        - name: 'AM: Resolution Estimated Proceeds'
+          dataType:
+            type: Integer
+        - name: 'AM: Resolution Projected Close Date'
           dataType:
             type: Date
-        - name: Original Loan Amount
+        - name: 'AM: Resolution Strategy'
           dataType:
-            type: Double
-        - name: Original Interest Rate
-          dataType:
-            type: Double
-        - name: Original Amortization Term
-          dataType:
-            type: Bigint
-        - name: Original Term to Maturity
-          dataType:
-            type: Bigint
-        - name: First Payment Date of Loan
+            type: String
+        - name: 'AM: Servicer Resolution Engaged Date'
           dataType:
             type: Date
-        - name: Interest Type Indicator
+        - name: 'AM: Servicer Resolution Estimated Proceeds'
           dataType:
-            type: Bigint
-        - name: Original Interest Only Term
-          dataType:
-            type: Bigint
-        - name: Buy Down Period
-          dataType:
-            type: String
-        - name: HELOC Draw Period
-          dataType:
-            type: Bigint
-        - name: Current Loan Amount
-          dataType:
-            type: Double
-        - name: Current Interest Rate
-          dataType:
-            type: Double
-        - name: Current Payment Amount Due
-          dataType:
-            type: Double
-        - name: Paid Through Date
+            type: Integer
+        - name: 'AM: Servicer Resolution Projected Close Date'
           dataType:
             type: Date
-        - name: Current Payment Status
-          dataType:
-            type: Boolean
-        - name: Index Type
-          dataType:
-            type: Bigint
-        - name: ARM Look-back Days
+        - name: 'AM: Servicer Resolution Strategy'
           dataType:
             type: String
-        - name: Gross Margin
-          dataType:
-            type: Double
-        - name: ARM Round Flag
-          dataType:
-            type: Bigint
-        - name: ARM Round Factor
-          dataType:
-            type: Double
-        - name: Initial Fixed Rate Period
+        - name: 'AM: Servicer Risk Rating'
           dataType:
             type: String
-        - name: Initial Interest Rate Cap (Change Up)
-          dataType:
-            type: Double
-        - name: Initial Interest Rate Cap (Change Down)
-          dataType:
-            type: Double
-        - name: Subsequent Interest Rate Reset Period
-          dataType:
-            type: Boolean
-        - name: Subsequent Interest Rate (Change Down)
-          dataType:
-            type: String
-        - name: Subsequent Interest Rate Cap (Change Up)
-          dataType:
-            type: String
-        - name: Lifetime Maximum Rate (Ceiling)
-          dataType:
-            type: Double
-        - name: Lifetime Minimum Rate (Floor)
-          dataType:
-            type: Double
-        - name: Negative Amortization Limit
-          dataType:
-            type: String
-        - name: Initial Negative Amortization Recast Period
-          dataType:
-            type: String
-        - name: Subsequent Negative Amortization Recast Period
-          dataType:
-            type: String
-        - name: Initial Fixed Payment Period
-          dataType:
-            type: String
-        - name: Subsequent Payment Reset Period
-          dataType:
-            type: String
-        - name: Initial Periodic Payment Cap
-          dataType:
-            type: String
-        - name: Subsequent Periodic Payment Cap
-          dataType:
-            type: String
-        - name: Initial Minimum Payment Reset Period
-          dataType:
-            type: String
-        - name: Subsequent Minimum Payment Reset Period
-          dataType:
-            type: String
-        - name: Option ARM Indicator
-          dataType:
-            type: Boolean
-        - name: Options at Recast
-          dataType:
-            type: String
-        - name: Initial Minimum Payment
-          dataType:
-            type: String
-        - name: Current Minimum Payment
-          dataType:
-            type: String
-        - name: Prepayment Penalty Calculation
-          dataType:
-            type: String
-        - name: Prepayment Penalty Type
-          dataType:
-            type: String
-        - name: Prepayment Penalty Total Term
-          dataType:
-            type: String
-        - name: Prepayment Penalty Hard Term
-          dataType:
-            type: String
-        - name: Primary Borrower ID
-          dataType:
-            type: String
-        - name: Number of Mortgaged Properties
-          dataType:
-            type: Bigint
-        - name: Total Number of Borrowers
-          dataType:
-            type: Bigint
-        - name: Self-employment Flag
-          dataType:
-            type: Boolean
-        - name: Current 'Other' Monthly Payment
-          dataType:
-            type: Double
-        - name: 'Length of Employment: Borrower'
-          dataType:
-            type: Double
-        - name: 'Length of Employment: Co-Borrower'
-          dataType:
-            type: Double
-        - name: Years in Home
-          dataType:
-            type: Double
-        - name: FICO Model Used
-          dataType:
-            type: Boolean
-        - name: Most Recent FICO Date
+        - name: ARM First Payment Adj Date
           dataType:
             type: Date
-        - name: 'Primary Wage Earner Original FICO: Equifax'
-          dataType:
-            type: Bigint
-        - name: 'Primary Wage Earner Original FICO: Experian'
-          dataType:
-            type: Bigint
-        - name: 'Primary Wage Earner Original FICO: TransUnion'
-          dataType:
-            type: Bigint
-        - name: 'Secondary Wage Earner Original FICO: Equifax'
-          dataType:
-            type: Bigint
-        - name: 'Secondary Wage Earner Original FICO: Experian'
-          dataType:
-            type: Bigint
-        - name: 'Secondary Wage Earner Original FICO: TransUnion'
-          dataType:
-            type: Bigint
-        - name: Most Recent Primary Borrower FICO
-          dataType:
-            type: Bigint
-        - name: Most Recent Co-Borrower FICO
-          dataType:
-            type: Bigint
-        - name: Most Recent FICO Method
-          dataType:
-            type: Bigint
-        - name: 'VantageScore: Primary Borrower'
-          dataType:
-            type: String
-        - name: 'VantageScore: Co-Borrower'
-          dataType:
-            type: String
-        - name: Most Recent Vantagescore Method
-          dataType:
-            type: String
-        - name: Vantagescore Date
-          dataType:
-            type: String
-        - name: 'Credit Report: Longest Trade Line'
-          dataType:
-            type: Bigint
-        - name: 'Credit Report: Maximum Trade Line'
-          dataType:
-            type: Double
-        - name: 'Credit Report: Number of Trade Lines'
-          dataType:
-            type: Bigint
-        - name: Credit Line Usage Ratio
-          dataType:
-            type: Double
-        - name: Most Recent 24-month Pay History
-          dataType:
-            type: Double
-        - name: Months Bankruptcy
-          dataType:
-            type: Bigint
-        - name: Months Foreclosure
-          dataType:
-            type: String
-        - name: Primary Borrower Wage Income
-          dataType:
-            type: Double
-        - name: Co-Borrower Wage Income
-          dataType:
-            type: Double
-        - name: Primary Borrower Other Income
-          dataType:
-            type: Double
-        - name: Co-Borrower Other Income
-          dataType:
-            type: Double
-        - name: All Borrower Wage Income
-          dataType:
-            type: Double
-        - name: All Borrower Total Income
-          dataType:
-            type: Double
-        - name: 4506-T Indicator
-          dataType:
-            type: Boolean
-        - name: Borrower Income Verification Level
-          dataType:
-            type: Bigint
-        - name: Co-Borrower Income Verification
-          dataType:
-            type: Bigint
-        - name: Borrower Employment Verification
-          dataType:
-            type: Bigint
-        - name: Co-Borrower Employment Verification
-          dataType:
-            type: Bigint
-        - name: Borrower Asset Verification
-          dataType:
-            type: Bigint
-        - name: Co-Borrower Asset Verification
-          dataType:
-            type: Bigint
-        - name: Liquid / Cash Reserves
-          dataType:
-            type: Double
-        - name: Monthly Debt All Borrowers
-          dataType:
-            type: Double
-        - name: Originator DTI
-          dataType:
-            type: Double
-        - name: Fully Indexed Rate
-          dataType:
-            type: Double
-        - name: Qualification Method
-          dataType:
-            type: Bigint
-        - name: Percentage of Down Payment From Borrower Own Funds
-          dataType:
-            type: Boolean
-        - name: City
-          dataType:
-            type: String
-        - name: State
-          dataType:
-            type: String
-        - name: Postal Code
-          dataType:
-            type: Bigint
-        - name: Property Type
-          dataType:
-            type: Bigint
-        - name: Occupancy
-          dataType:
-            type: Bigint
-        - name: Sales Price
-          dataType:
-            type: Bigint
-        - name: Original Appraised Property Value
-          dataType:
-            type: Bigint
-        - name: Original Property Valuation Type
-          dataType:
-            type: Bigint
-        - name: Original Property Valuation Date
+        - name: ARM First Rate Adj Date
           dataType:
             type: Date
-        - name: Original Automated Valuation Model (AVM) Model Name
-          dataType:
-            type: Bigint
-        - name: Original AVM Confidence Score
-          dataType:
-            type: Double
-        - name: Most Recent Property Value
-          dataType:
-            type: Bigint
-        - name: Most Recent Property Valuation Type
-          dataType:
-            type: Bigint
-        - name: Most Recent Property Valuation Date
-          dataType:
-            type: Date
-        - name: Most Recent AVM Model Name
-          dataType:
-            type: Bigint
-        - name: Most Recent AVM Confidence Score
-          dataType:
-            type: Double
-        - name: Original CLTV
-          dataType:
-            type: Double
-        - name: Original LTV
-          dataType:
-            type: Double
-        - name: Original Pledged Assets
-          dataType:
-            type: String
-        - name: Mortgage Insurance Company Name
-          dataType:
-            type: String
-        - name: Mortgage Insurance Percent
-          dataType:
-            type: String
-        - name: 'MI: Lender or Borrower Paid?'
-          dataType:
-            type: String
-        - name: Pool Insurance Co. Name
-          dataType:
-            type: String
-        - name: Pool Insurance Stop Loss %
-          dataType:
-            type: String
-        - name: MI Certificate Number
-          dataType:
-            type: String
-        - name: Updated DTI (Front-end)
-          dataType:
-            type: String
-        - name: Updated DTI (Back-end)
-          dataType:
-            type: String
-        - name: Modification Effective Payment Date
-          dataType:
-            type: String
-        - name: Total Capitalized Amount
-          dataType:
-            type: String
-        - name: Total Deferred Amount
-          dataType:
-            type: Boolean
-        - name: Pre-Modification Interest (Note) Rate
-          dataType:
-            type: String
-        - name: Pre-Modification P&I Payment
-          dataType:
-            type: String
-        - name: Pre-Modification Initial Interest Rate Change Downward Cap
-          dataType:
-            type: String
-        - name: Pre-Modification Subsequent Interest Rate Cap
-          dataType:
-            type: String
-        - name: Pre-Modification Next Interest Rate Change Date
-          dataType:
-            type: String
-        - name: Pre-Modification I/O Term
-          dataType:
-            type: String
-        - name: Forgiven Principal Amount
-          dataType:
-            type: String
-        - name: Forgiven Interest Amount
-          dataType:
-            type: String
-        - name: Number of Modifications
-          dataType:
-            type: String
-        - name: 'Supplemental Field: TILA Status'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Seller'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Primary Wage Earner Refreshed FICO Experian'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Primary Wage Earner Refreshed FICO Equifax'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Primary Wage Earner Refreshed FICO Transunion'
-          dataType:
-            type: Bigint
-        - name: 'Supplemental Field: Primary Wage Earner Refreshed Median FICO'
-          dataType:
-            type: Bigint
-        - name: 'Supplemental Field: Primary Wage Earner Refreshed FICO Date'
-          dataType:
-            type: Date
-        - name: 'Supplemental Field: Secondary Wage Earner Refreshed FICO Experian'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Secondary Wage Earner Refreshed FICO Equifax'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Secondary Wage Earner Refreshed FICO Transunion'
-          dataType:
-            type: Bigint
-        - name: 'Supplemental Field: Secondary Wage Earner Refreshed Median FICO'
-          dataType:
-            type: Bigint
-        - name: 'Supplemental Field: Secondary Wage Earner Refreshed FICO Date'
-          dataType:
-            type: Date
-        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed FICO Experian'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed FICO Equifax'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed FICO Transunion'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed Median FICO'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Tertiary Wage Earner Refreshed FICO Date'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed FICO Experian'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed FICO Equifax'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed FICO Transunion'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed Median FICO'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Quaternary Wage Earner Refreshed FICO Date'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Collateral Type'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Documentation Type'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Third Party Originator (Correspondent Channel)'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Third Party Originator Channel (Correspondent
-            Channel)'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Servicing Transfer Date'
-          dataType:
-            type: Date
-        - name: Maturity Date
-          dataType:
-            type: Date
-        - name: 'Supplemental Field: COVID FB Request Flag'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: COVID FB Start Dt'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: COVID FB Active Flag'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: COVID FB End Dt'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Application Date'
-          dataType:
-            type: Date
-        - name: 'Supplemental Field: Existing Corporate Advance'
-          dataType:
-            type: Double
-        - name: 'Supplemental Field: Existing Escrow Advance'
-          dataType:
-            type: Double
-        - name: 'Supplemental Field: Initial HELOC Draw Amount'
-          dataType:
-            type: Double
-        - name: 'Supplemental Field: HELOC Status'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Utilization %'
-          dataType:
-            type: Double
-        - name: 'Supplemental Field: Tertiary Borrower Income Verification'
-          dataType:
-            type: Bigint
-        - name: 'Supplemental Field: Quaternary Borrower Income Verification'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Tertiary Borrower Employment Verification'
-          dataType:
-            type: Bigint
-        - name: 'Supplemental Field: Quaternary Borrower Employment Verification'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Tertiary Borrower Asset Verification'
-          dataType:
-            type: Boolean
-        - name: 'Supplemental Field: Quaternary Borrower Asset Verification'
-          dataType:
-            type: String
-        - name: 'Supplemental Field: Interest Paid Through Date'
-          dataType:
-            type: Date
-        - name: 'Supplemental Field: Original Qualifying FICO'
-          dataType:
-            type: Bigint
-        - name: 'Supplemental Field: Current FICO'
-          dataType:
-            type: Bigint
-        - name: 'Supplemental Field: Current Maturity Date'
-          dataType:
-            type: Date
-        - name: 'Supplemental Field: Senior Lien Note Rate'
-          dataType:
-            type: Double
-        - name: 'Supplemental Field: Step Rate 1'
-          dataType:
-            type: Double
-        - name: 'Supplemental Field: Step Date 1'
-          dataType:
-            type: Date
-        - name: 'Supplemental Field: Mod_flag'
-          dataType:
-            type: String
-      description: null
-      author: tanmay@prophecy.io
-      createdAt: '2025-11-30 15:24:22'
-      tableType: table
-    - name: gsmbs_expected_output
-      schema:
-        entityType: ''
-        providerType: databricks
-        fields:
-        - name: "﻿Seller Loan ID"
-          dataType:
-            type: Bigint
-        - name: Issuer Loan Number
-          dataType:
-            type: Bigint
-        - name: Servicer Loan Number
-          dataType:
-            type: String
-        - name: Parent Loan ID
-          dataType:
-            type: String
-        - name: Deal Name
-          dataType:
-            type: String
-        - name: As of Date
-          dataType:
-            type: String
-        - name: Orig Loan Amount
-          dataType:
-            type: Double
-        - name: Orig Loan Interest Rate
-          dataType:
-            type: Double
-        - name: Rate Type
-          dataType:
-            type: String
-        - name: Seller Product Type
-          dataType:
-            type: String
-        - name: Remaining Amortization Term
-          dataType:
-            type: Bigint
-        - name: Orig Loan Maturity Date
-          dataType:
-            type: String
-        - name: Orig Loan Term
-          dataType:
-            type: Bigint
-        - name: Curr Loan Balance
-          dataType:
-            type: Double
-        - name: Curr Loan Interest Rate
-          dataType:
-            type: Double
-        - name: Curr Loan Maturity Date
-          dataType:
-            type: String
-        - name: Origination Note Date
-          dataType:
-            type: String
-        - name: First Payment Date
-          dataType:
-            type: String
         - name: ARM Flag
           dataType:
-            type: Bigint
+            type: Boolean
         - name: ARM Index
           dataType:
-            type: Bigint
+            type: String
         - name: ARM Index Rate
           dataType:
-            type: String
+            type: Integer
         - name: ARM Initial Fixed Rate Period
           dataType:
-            type: String
+            type: Integer
+        - name: ARM Initial Rate Adj Cap
+          dataType:
+            type: Integer
+        - name: ARM Life Cap
+          dataType:
+            type: Integer
+        - name: ARM Lookback Days
+          dataType:
+            type: Integer
         - name: ARM Margin
           dataType:
-            type: Double
-        - name: Step Flag
+            type: Integer
+        - name: ARM Max Rate
+          dataType:
+            type: Integer
+        - name: ARM Min Rate
+          dataType:
+            type: Integer
+        - name: ARM Next Payment Adj Date
+          dataType:
+            type: Date
+        - name: ARM Next Rate Adj Date
+          dataType:
+            type: Date
+        - name: ARM Payment Adj Frequency
+          dataType:
+            type: Integer
+        - name: ARM Periodic Cap
+          dataType:
+            type: Integer
+        - name: ARM Rate Adj Frequency
+          dataType:
+            type: Integer
+        - name: ARM Remaining Fixed Rate Period
+          dataType:
+            type: Integer
+        - name: ARM Round Factor
+          dataType:
+            type: Integer
+        - name: ARM Round Flag
+          dataType:
+            type: Boolean
+        - name: AUS Response
           dataType:
             type: String
-        - name: Step 1 Rate
+        - name: AVM Value
+          dataType:
+            type: Float
+        - name: AVM Value Date
+          dataType:
+            type: Date
+        - name: Academic Grade Level
           dataType:
             type: String
-        - name: Step 1 Date
+        - name: Accrued Interest Balance
+          dataType:
+            type: Float
+        - name: Acq ARM Flag
+          dataType:
+            type: Boolean
+        - name: Acq ARM Next Rate Adj Date
+          dataType:
+            type: Date
+        - name: Acq Amortization Term
+          dataType:
+            type: Integer
+        - name: Acq Amortization Type
           dataType:
             type: String
-        - name: Step 2 Rate
+        - name: Acq Balloon Flag
+          dataType:
+            type: Boolean
+        - name: Acq Balloon Payment
+          dataType:
+            type: Integer
+        - name: Acq Cutoff Date
+          dataType:
+            type: Date
+        - name: Acq Deferred Balance
+          dataType:
+            type: Integer
+        - name: Acq Interest Only Flag
+          dataType:
+            type: Boolean
+        - name: Acq Interest Only Term
+          dataType:
+            type: Integer
+        - name: Acq Last Payment Date
+          dataType:
+            type: Date
+        - name: Acq Loan Balance
+          dataType:
+            type: Float
+        - name: Acq Loan Interest Rate
+          dataType:
+            type: Integer
+        - name: Acq Loan Maturity Date
+          dataType:
+            type: Date
+        - name: Acq PI Payment
+          dataType:
+            type: Integer
+        - name: Acq PITI Payment
+          dataType:
+            type: Integer
+        - name: Acq Payment Next Due Date
+          dataType:
+            type: Date
+        - name: Acq Payment Paid Thru Date
+          dataType:
+            type: Date
+        - name: Acq Servicer Delinquency Status
           dataType:
             type: String
-        - name: Step 2 Date
+        - name: Acq TI Payment
+          dataType:
+            type: Integer
+        - name: Acq WAM Delinquency Status
           dataType:
             type: String
-        - name: Step 3 Rate
+        - name: Active Forbearance Flag
           dataType:
-            type: String
-        - name: Step 3 Date
-          dataType:
-            type: String
-        - name: Step 4 Rate
-          dataType:
-            type: String
-        - name: Step 4 Date
-          dataType:
-            type: String
-        - name: Step 5 Rate
-          dataType:
-            type: String
-        - name: Step 5 Date
-          dataType:
-            type: String
-        - name: Number of Borrowers
-          dataType:
-            type: Bigint
-        - name: All Borrower Total Monthly Income
-          dataType:
-            type: Double
-        - name: All Borrower Monthly Debt
-          dataType:
-            type: Double
-        - name: Borr 1 Credit Score
-          dataType:
-            type: Bigint
-        - name: Borr 2 Credit Score
-          dataType:
-            type: Bigint
-        - name: Current FICO
-          dataType:
-            type: Bigint
-        - name: Original FICO
-          dataType:
-            type: Bigint
-        - name: Foreign National Flag
-          dataType:
-            type: Bigint
-        - name: Loan Age
-          dataType:
-            type: Bigint
-        - name: Prepayment Penalty Description
-          dataType:
-            type: String
-        - name: Prepayment Penalty Percentage
-          dataType:
-            type: String
-        - name: Prepayment Penalty Period
-          dataType:
-            type: String
-        - name: Days Delinquent
-          dataType:
-            type: Bigint
-        - name: Curr Servicer Delinquency Status
-          dataType:
-            type: String
-        - name: Prior Servicer Delinquency Status
-          dataType:
-            type: String
-        - name: Paid to Date
-          dataType:
-            type: String
-        - name: Orig Holdback Amount
-          dataType:
-            type: String
-        - name: Orig Available Line of Credit
-          dataType:
-            type: String
-        - name: LOC Current Drawn Amount
-          dataType:
-            type: String
-        - name: LOC Initial Draw Amount
-          dataType:
-            type: String
-        - name: Curr Holdback Amount
-          dataType:
-            type: String
-        - name: Principal Limit
-          dataType:
-            type: String
-        - name: Rehab Budget
+            type: Boolean
+        - name: Amortization Basis
           dataType:
             type: String
         - name: Amount First Disbursement
           dataType:
-            type: String
-        - name: Credit Line Usage Ratio
-          dataType:
-            type: Double
-        - name: Purchase Basis
-          dataType:
-            type: String
-        - name: Orig LTV
-          dataType:
-            type: Double
-        - name: Orig CLTV
-          dataType:
-            type: Double
-        - name: Orig Appraisal Value
-          dataType:
-            type: Bigint
-        - name: Appraisal Date
-          dataType:
-            type: String
-        - name: BPO Value
-          dataType:
-            type: Bigint
-        - name: BPO Date
-          dataType:
-            type: String
-        - name: Orig Sales Price
-          dataType:
-            type: Bigint
-        - name: Curr LTV
-          dataType:
-            type: Double
-        - name: Curr CLTV
-          dataType:
-            type: Double
+            type: Integer
         - name: As Is Value
           dataType:
-            type: String
-        - name: LTARV
+            type: Float
+        - name: As Is Value Date
           dataType:
-            type: String
-        - name: LTAIV
+            type: Date
+        - name: As Of Date
           dataType:
-            type: String
-        - name: LTC Fully Baked
-          dataType:
-            type: String
-        - name: Orig LTC
-          dataType:
-            type: String
-        - name: Property Latest Value
-          dataType:
-            type: Bigint
+            type: Date
         - name: As Repaired Value
           dataType:
-            type: String
-        - name: Personal Guarantee
+            type: Float
+        - name: As Repaired Value Date
+          dataType:
+            type: Date
+        - name: BPO Date
+          dataType:
+            type: Date
+        - name: BPO Value
+          dataType:
+            type: Float
+        - name: Bankruptcy Case Number
           dataType:
             type: String
-        - name: UW DSCR
+        - name: Bankruptcy Chapter
           dataType:
             type: String
-        - name: Stabalized DSCR
+        - name: Bankruptcy Court District
+          dataType:
+            type: String
+        - name: Bankruptcy Discharged Date
+          dataType:
+            type: Date
+        - name: Bankruptcy Dismiss/Discharge/MFR Flag
+          dataType:
+            type: Boolean
+        - name: Bankruptcy Dismissed Date
+          dataType:
+            type: Date
+        - name: Bankruptcy Filed Date
+          dataType:
+            type: Date
+        - name: Bankruptcy Flag
+          dataType:
+            type: Boolean
+        - name: Bankruptcy MFR Filed Date
+          dataType:
+            type: Date
+        - name: Bankruptcy MFR Granted Date
+          dataType:
+            type: Date
+        - name: Bankruptcy Post Petition Due Date
+          dataType:
+            type: Date
+        - name: Bankruptcy Status
+          dataType:
+            type: String
+        - name: Base Discount Margin
+          dataType:
+            type: Integer
+        - name: Base Duration
+          dataType:
+            type: Integer
+        - name: Base WAL
+          dataType:
+            type: Integer
+        - name: Base Yield
+          dataType:
+            type: Integer
+        - name: Borr 1 Age
+          dataType:
+            type: Integer
+        - name: Borr 1 Asset Verification
+          dataType:
+            type: String
+        - name: Borr 1 Credit Score
+          dataType:
+            type: Integer
+        - name: Borr 1 Credit Score Date
+          dataType:
+            type: Date
+        - name: Borr 1 Date of Birth
+          dataType:
+            type: Date
+        - name: Borr 1 Decease Date
+          dataType:
+            type: Date
+        - name: Borr 1 Employment Verification
+          dataType:
+            type: String
+        - name: Borr 1 Gender
+          dataType:
+            type: String
+        - name: Borr 1 Income Verification
+          dataType:
+            type: String
+        - name: Borr 1 Length of Employment
+          dataType:
+            type: Integer
+        - name: Borr 1 Name
+          dataType:
+            type: String
+        - name: Borr 1 Name First
+          dataType:
+            type: String
+        - name: Borr 1 Name Last
+          dataType:
+            type: String
+        - name: Borr 1 Name Middle
+          dataType:
+            type: String
+        - name: Borr 1 Natural Person Flag
+          dataType:
+            type: Integer
+        - name: Borr 1 Other Income
+          dataType:
+            type: Integer
+        - name: Borr 1 Recourse Flag
+          dataType:
+            type: Boolean
+        - name: Borr 1 Recourse Pct
+          dataType:
+            type: Integer
+        - name: Borr 1 Recourse Type
+          dataType:
+            type: String
+        - name: Borr 1 Residency Status
+          dataType:
+            type: String
+        - name: Borr 1 SSN
+          dataType:
+            type: String
+        - name: Borr 1 Self-Employment Flag
+          dataType:
+            type: Boolean
+        - name: Borr 1 Total Monthly Income
+          dataType:
+            type: Integer
+        - name: Borr 1 Wage Income
+          dataType:
+            type: Integer
+        - name: Borr 2 Age
+          dataType:
+            type: Integer
+        - name: Borr 2 Asset Verification
+          dataType:
+            type: String
+        - name: Borr 2 Credit Score
+          dataType:
+            type: Integer
+        - name: Borr 2 Credit Score Date
+          dataType:
+            type: Date
+        - name: Borr 2 Date of Birth
+          dataType:
+            type: Date
+        - name: Borr 2 Decease Date
+          dataType:
+            type: Date
+        - name: Borr 2 Employment Verification
+          dataType:
+            type: String
+        - name: Borr 2 Gender
+          dataType:
+            type: String
+        - name: Borr 2 Income Verification
+          dataType:
+            type: String
+        - name: Borr 2 Length of Employment
+          dataType:
+            type: Integer
+        - name: Borr 2 Name
+          dataType:
+            type: String
+        - name: Borr 2 Name First
+          dataType:
+            type: String
+        - name: Borr 2 Name Last
+          dataType:
+            type: String
+        - name: Borr 2 Name Middle
+          dataType:
+            type: String
+        - name: Borr 2 Natural Person Flag
+          dataType:
+            type: Integer
+        - name: Borr 2 Other Income
+          dataType:
+            type: Integer
+        - name: Borr 2 Recourse Flag
+          dataType:
+            type: Boolean
+        - name: Borr 2 Recourse Pct
+          dataType:
+            type: Integer
+        - name: Borr 2 Recourse Type
+          dataType:
+            type: String
+        - name: Borr 2 Residency Status
+          dataType:
+            type: String
+        - name: Borr 2 SSN
+          dataType:
+            type: String
+        - name: Borr 2 Self-Employment Flag
+          dataType:
+            type: Boolean
+        - name: Borr 2 Total Monthly Income
+          dataType:
+            type: Integer
+        - name: Borr 2 Wage Income
+          dataType:
+            type: Integer
+        - name: Borr 3 Name
+          dataType:
+            type: String
+        - name: Borr 3 Name First
+          dataType:
+            type: String
+        - name: Borr 3 Name Last
+          dataType:
+            type: String
+        - name: Borr 3 Name Middle
+          dataType:
+            type: String
+        - name: Borr 3 Natural Person Flag
+          dataType:
+            type: Integer
+        - name: Borr 3 Recourse Flag
+          dataType:
+            type: Boolean
+        - name: Borr 3 Recourse Pct
+          dataType:
+            type: Integer
+        - name: Borr 3 Recourse Type
+          dataType:
+            type: String
+        - name: Borr 3 SSN
+          dataType:
+            type: String
+        - name: Borr Email Address
+          dataType:
+            type: String
+        - name: Borr Home City
+          dataType:
+            type: String
+        - name: Borr Home Country
+          dataType:
+            type: String
+        - name: Borr Home State
+          dataType:
+            type: String
+        - name: Borr Home Street
+          dataType:
+            type: String
+        - name: Borr Home Zip
+          dataType:
+            type: String
+        - name: Borr Phone Number
+          dataType:
+            type: String
+        - name: Borrower Experience (Properties)
+          dataType:
+            type: Integer
+        - name: Borrower Experience (Tier)
+          dataType:
+            type: String
+        - name: BorrowerID
+          dataType:
+            type: String
+        - name: Bridge Loan Flag
+          dataType:
+            type: Boolean
+        - name: Broker Flag
+          dataType:
+            type: Boolean
+        - name: Buydown Period
+          dataType:
+            type: Integer
+        - name: Buyout Date
+          dataType:
+            type: Date
+        - name: CBSA Code
+          dataType:
+            type: Integer
+        - name: CDFI Flag
+          dataType:
+            type: Boolean
+        - name: CDR - Lifetime
+          dataType:
+            type: Float
+        - name: CEMA Flag
+          dataType:
+            type: Boolean
+        - name: CF Vector
+          dataType:
+            type: String
+        - name: CF Vel 12 Mths
+          dataType:
+            type: Float
+        - name: CF Vel 24 Mths
+          dataType:
+            type: Float
+        - name: CF Vel 3 Mths
+          dataType:
+            type: Float
+        - name: CF Vel 6 Mths
+          dataType:
+            type: Float
+        - name: COVID Flag
+          dataType:
+            type: String
+        - name: CPR - Lifetime
+          dataType:
+            type: Float
+        - name: CRE Financials Method
+          dataType:
+            type: String
+        - name: 'CRE Financials: As Of End Date'
+          dataType:
+            type: Date
+        - name: 'CRE Financials: As Of Start Date'
+          dataType:
+            type: Date
+        - name: 'CRE Financials: DSCR (NCF)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: DSCR (NOI)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: Debt Service Amount'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: Effective Gross Income'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: Latest DSCR NCF (Calc)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: Latest DSCR NOI (Calc)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: Latest Debt Yield (Calc)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: NCF Amount'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: NOI Amount'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: Potential Gross Rental Income'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: Revenue Amount'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW DSCR (NCF)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW DSCR (NOI)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW DSCR NCF (Calc)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW DSCR NOI (Calc)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW Debt Service Amount'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW Debt Yield (Calc)'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW NCF Amount'
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW NOI Amount'
+          dataType:
+            type: Integer
+        - name: 'CRE Occupancy: 2nd Largest Tenant'
+          dataType:
+            type: String
+        - name: 'CRE Occupancy: 2nd Largest Tenant Lease Exp Date'
+          dataType:
+            type: Date
+        - name: 'CRE Occupancy: 2nd Largest Tenant Pct'
+          dataType:
+            type: Integer
+        - name: 'CRE Occupancy: 2nd Largest Tenant Sq Ft'
+          dataType:
+            type: Integer
+        - name: 'CRE Occupancy: 3rd Largest Tenant'
+          dataType:
+            type: String
+        - name: 'CRE Occupancy: 3rd Largest Tenant Lease Exp Date'
+          dataType:
+            type: Date
+        - name: 'CRE Occupancy: 3rd Largest Tenant Pct'
+          dataType:
+            type: Integer
+        - name: 'CRE Occupancy: 3rd Largest Tenant Sq Ft'
+          dataType:
+            type: Integer
+        - name: 'CRE Occupancy: Largest Tenant'
+          dataType:
+            type: String
+        - name: 'CRE Occupancy: Largest Tenant Lease Exp Date'
+          dataType:
+            type: Date
+        - name: 'CRE Occupancy: Largest Tenant Pct'
+          dataType:
+            type: String
+        - name: 'CRE Occupancy: Largest Tenant Sq Ft'
+          dataType:
+            type: Integer
+        - name: 'CRE Occupancy: Pct Occupied'
+          dataType:
+            type: Integer
+        - name: 'CRE Occupancy: Pct Occupied As-Of Date'
+          dataType:
+            type: Date
+        - name: CRE Property Size (Sq Ft/ Units/ Keys/ Acres)
+          dataType:
+            type: Integer
+        - name: 'CRE: Defeasance Status'
+          dataType:
+            type: String
+        - name: 'CRE: Defeased Date'
+          dataType:
+            type: Date
+        - name: 'CRE: Environmental Completed Date'
+          dataType:
+            type: Date
+        - name: 'CRE: Environmental Score'
+          dataType:
+            type: Integer
+        - name: 'CRE: On Watchlist Flag'
+          dataType:
+            type: String
+        - name: 'CRE: Watchlist Start Date'
+          dataType:
+            type: Date
+        - name: Cap Rate
+          dataType:
+            type: Integer
+        - name: Cash Out Amount
+          dataType:
+            type: Float
+        - name: Cash Rcvd Curr Month
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 1
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 10
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 11
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 12
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 2
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 3
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 4
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 5
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 6
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 7
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 8
+          dataType:
+            type: Float
+        - name: Cash Rcvd Mths Prior 9
+          dataType:
+            type: Float
+        - name: Charge Off Date
+          dataType:
+            type: Date
+        - name: Claim Active Flag
+          dataType:
+            type: Boolean
+        - name: Claim Certificate Number
+          dataType:
+            type: String
+        - name: Claim Denial Reason
+          dataType:
+            type: String
+        - name: Claim Denied Date
+          dataType:
+            type: Date
+        - name: Claim Denied Flag
+          dataType:
+            type: Boolean
+        - name: Claim Filed Amount
+          dataType:
+            type: Float
+        - name: Claim Filed Date
+          dataType:
+            type: Date
+        - name: Claim Filing Due Date
+          dataType:
+            type: Date
+        - name: Claim Loss Amount
+          dataType:
+            type: Float
+        - name: Claim Received Amount
+          dataType:
+            type: Float
+        - name: Claim Received Date
+          dataType:
+            type: Date
+        - name: Claim Status
+          dataType:
+            type: String
+        - name: Claim Type
+          dataType:
+            type: String
+        - name: Collateral Custodian
+          dataType:
+            type: String
+        - name: Collateral Sale Date
+          dataType:
+            type: Date
+        - name: Collateral Sale Price
+          dataType:
+            type: Float
+        - name: Collateral Sale Type
+          dataType:
+            type: String
+        - name: Construction Only Amount
+          dataType:
+            type: Integer
+        - name: Construction Only Flag
+          dataType:
+            type: Boolean
+        - name: Contracted Amount
+          dataType:
+            type: Integer
+        - name: Conveyance Flag
+          dataType:
+            type: Boolean
+        - name: Corp Advance Non Recoverable Balance
+          dataType:
+            type: Integer
+        - name: Corp Advance Recoverable Balance
+          dataType:
+            type: Float
+        - name: Cosigner Flag
+          dataType:
+            type: Boolean
+        - name: Credit Line Usage Ratio
+          dataType:
+            type: Integer
+        - name: 'Credit: Longest Trade Line'
+          dataType:
+            type: Integer
+        - name: 'Credit: Maximum Trade Line'
+          dataType:
+            type: Float
+        - name: 'Credit: Number of Trade Lines'
+          dataType:
+            type: Integer
+        - name: Cross Collateralized Flag
+          dataType:
+            type: Boolean
+        - name: Cross Defaulted Flag
+          dataType:
+            type: Boolean
+        - name: Cumulative Loss
+          dataType:
+            type: Float
+        - name: Curr Amortization Type
+          dataType:
+            type: String
+        - name: Curr Available Line of Credit
+          dataType:
+            type: Float
+        - name: Curr Balance per Sq Ft/ Unit/ Room/ Acre
+          dataType:
+            type: Integer
+        - name: Curr Balloon Flag
+          dataType:
+            type: Boolean
+        - name: Curr Balloon Payment
+          dataType:
+            type: Integer
+        - name: Curr CLTV
+          dataType:
+            type: Integer
+        - name: Curr CLTV (Calc)
+          dataType:
+            type: Integer
+        - name: Curr Deferred Balance
+          dataType:
+            type: Float
+        - name: Curr Deferred Interest Balance
+          dataType:
+            type: Float
+        - name: Curr Deferred Principal Balance
+          dataType:
+            type: Float
+        - name: Curr Holdback Amount
+          dataType:
+            type: Float
+        - name: Curr Interest Bearing Balance
+          dataType:
+            type: Float
+        - name: Curr Interest Only Exp Date
+          dataType:
+            type: Date
+        - name: Curr Interest Only Flag
+          dataType:
+            type: Boolean
+        - name: Curr Jr LTV (Calc)
+          dataType:
+            type: Integer
+        - name: Curr LTV
+          dataType:
+            type: Integer
+        - name: Curr LTV (Calc)
+          dataType:
+            type: Integer
+        - name: Curr LTV + MCA (Any Valuation)
+          dataType:
+            type: String
+        - name: Curr LTV + MCA (Appraisal Only)
+          dataType:
+            type: String
+        - name: Curr LTV + MCA (Appraisal or BPO Only)
+          dataType:
+            type: String
+        - name: Curr Last Payment Date
+          dataType:
+            type: Date
+        - name: Curr Legal Balance
+          dataType:
+            type: Float
+        - name: Curr Loan Balance
+          dataType:
+            type: Float
+        - name: Curr Loan Interest Rate
+          dataType:
+            type: Integer
+        - name: Curr Loan Maturity Date
+          dataType:
+            type: Date
+        - name: Curr Occupancy Status
+          dataType:
+            type: String
+        - name: Curr PI Payment
+          dataType:
+            type: Float
+        - name: Curr PITI Payment
+          dataType:
+            type: Integer
+        - name: Curr Payment Next Due Date
+          dataType:
+            type: Date
+        - name: Curr Payment Paid Thru Date
+          dataType:
+            type: Date
+        - name: Curr Prepayment Penalty Flag
+          dataType:
+            type: Boolean
+        - name: Curr Prepayment Penalty Status
+          dataType:
+            type: String
+        - name: Curr Servicer Delinquency Status
+          dataType:
+            type: String
+        - name: Curr Sr LTV (Calc)
+          dataType:
+            type: Integer
+        - name: Curr TI Payment
+          dataType:
+            type: Float
+        - name: Curr WAM Delinquency Status
           dataType:
             type: String
         - name: Current Debt Yield
           dataType:
-            type: String
-        - name: Stabilized Debt Yield
+            type: Integer
+        - name: Current FICO
+          dataType:
+            type: Integer
+        - name: Current FICO Date
+          dataType:
+            type: Date
+        - name: Current Junior Mortgage Balance
+          dataType:
+            type: Float
+        - name: Current Other Payment
+          dataType:
+            type: Float
+        - name: Current Payment Amount Due
+          dataType:
+            type: Float
+        - name: Current Product Type
           dataType:
             type: String
-        - name: Short Term Rental Flag
+        - name: Custodial Loan ID
           dataType:
-            type: Bigint
+            type: String
+        - name: 'DD: Assignment Issues Flag'
+          dataType:
+            type: Boolean
+        - name: 'DD: Cashflow Grade'
+          dataType:
+            type: String
+        - name: 'DD: Compliance Detail'
+          dataType:
+            type: String
+        - name: 'DD: Compliance Event Grade'
+          dataType:
+            type: String
+        - name: 'DD: Credit Detail'
+          dataType:
+            type: String
+        - name: 'DD: Credit Event Grade'
+          dataType:
+            type: String
+        - name: 'DD: Exception Count'
+          dataType:
+            type: Integer
+        - name: 'DD: Exception Date'
+          dataType:
+            type: Date
+        - name: 'DD: Exception Detail'
+          dataType:
+            type: String
+        - name: 'DD: Exception Type'
+          dataType:
+            type: String
+        - name: 'DD: Final Assignee'
+          dataType:
+            type: String
+        - name: 'DD: Final Mortgage Assigned Flag'
+          dataType:
+            type: Boolean
+        - name: 'DD: Loan Defect Flag'
+          dataType:
+            type: Boolean
+        - name: 'DD: Overall Grade'
+          dataType:
+            type: String
+        - name: 'DD: Property Event Grade'
+          dataType:
+            type: String
+        - name: 'DD: Servicing Grade'
+          dataType:
+            type: String
+        - name: 'DD: Subject Mortgage Recorded Flag'
+          dataType:
+            type: Boolean
+        - name: 'DD: TIL Status'
+          dataType:
+            type: String
+        - name: 'DD: Title Grade'
+          dataType:
+            type: String
+        - name: 'DD: Title Issues Flag'
+          dataType:
+            type: Boolean
         - name: DTI Ratio
           dataType:
-            type: Double
-        - name: Cash Out Amount
+            type: Integer
+        - name: DTI Ratio (Front-End)
           dataType:
-            type: Double
-        - name: Loan Purpose
+            type: Integer
+        - name: Daily Simple Interest Flag
           dataType:
-            type: String
-        - name: Property Type
-          dataType:
-            type: String
-        - name: Property Year Built
+            type: Boolean
+        - name: Day Count Convention
           dataType:
             type: String
-        - name: Property Year Renovated
+        - name: Days Delinquent
+          dataType:
+            type: Integer
+        - name: Deal Closing Date
+          dataType:
+            type: Date
+        - name: Deal Cloud ID
+          dataType:
+            type: Integer
+        - name: Deal Funding Due Date
+          dataType:
+            type: Date
+        - name: Deal Name
           dataType:
             type: String
-        - name: Scratch and Dent Reason
+        - name: Debenture Balance
+          dataType:
+            type: Integer
+        - name: Debenture Interest Rate
+          dataType:
+            type: Integer
+        - name: Debenture Rate (Calc)
+          dataType:
+            type: Integer
+        - name: Deed In Lieu Appraisal Date
+          dataType:
+            type: Date
+        - name: Deed In Lieu Appraisal Value
+          dataType:
+            type: Integer
+        - name: Deed In Lieu Recording Date
+          dataType:
+            type: Date
+        - name: Default Date
+          dataType:
+            type: Date
+        - name: Default Loan Interest Rate
+          dataType:
+            type: Integer
+        - name: Default Reason
           dataType:
             type: String
-        - name: Cross Collateralized Flag
+        - name: Deferment End Date
+          dataType:
+            type: Date
+        - name: Deferment Start Date
+          dataType:
+            type: Date
+        - name: Deferment Type
           dataType:
             type: String
-        - name: Number of Properties
+        - name: Deferred Interest Amount
           dataType:
-            type: Bigint
-        - name: Borrower Experience Properties
+            type: Float
+        - name: Deferred Servicing Fees
           dataType:
-            type: String
-        - name: Borrower Experience Level
-          dataType:
-            type: String
-        - name: Curr Occupancy Status
+            type: Integer
+        - name: Degree Type
           dataType:
             type: String
-        - name: Orig Occupancy Status
+        - name: Degree Type Detail
           dataType:
             type: String
+        - name: Delq Hist Times 30
+          dataType:
+            type: Integer
+        - name: Delq Hist Times 60
+          dataType:
+            type: Integer
+        - name: Delq Hist Times 90
+          dataType:
+            type: Integer
+        - name: Disbursement Date
+          dataType:
+            type: Date
         - name: Doc Type
           dataType:
             type: String
-        - name: Lien Position
+        - name: Down Payment Amount
           dataType:
-            type: Bigint
-        - name: Known Junior Liens
+            type: Integer
+        - name: Due & Payable Date
           dataType:
-            type: Double
-        - name: Senior Lien Original Balance
+            type: Date
+        - name: Due & Payable Flag
           dataType:
-            type: Double
-        - name: Years in Home
+            type: Boolean
+        - name: Due and Payable Appraisal Date
           dataType:
-            type: Double
-        - name: Senior Lien Interest Rate
+            type: Date
+        - name: Due and Payable Appraisal Value
+          dataType:
+            type: Integer
+        - name: Dutch Flag
+          dataType:
+            type: Boolean
+        - name: Enote Flag
+          dataType:
+            type: Boolean
+        - name: Escrow Advance Balance
+          dataType:
+            type: Float
+        - name: Escrow Flag
+          dataType:
+            type: Boolean
+        - name: Estimated Construction Period
+          dataType:
+            type: Integer
+        - name: Eviction End Date
+          dataType:
+            type: Date
+        - name: Eviction Start Date
+          dataType:
+            type: Date
+        - name: FHA Case Number
           dataType:
             type: String
+        - name: FHA Flag
+          dataType:
+            type: Boolean
+        - name: FNMA Loan ID
+          dataType:
+            type: String
+        - name: Final Credit Grade
+          dataType:
+            type: String
+        - name: 'Financing: Advance Rate'
+          dataType:
+            type: Integer
+        - name: 'Financing: Ineligibility Reason'
+          dataType:
+            type: String
+        - name: 'Financing: Lender'
+          dataType:
+            type: String
+        - name: 'Financing: Lender Advance Actual'
+          dataType:
+            type: Integer
+        - name: 'Financing: Lender Price'
+          dataType:
+            type: Integer
+        - name: 'Financing: Line'
+          dataType:
+            type: String
+        - name: First-time Home Buyer
+          dataType:
+            type: Boolean
+        - name: Forbearance Amount
+          dataType:
+            type: Float
+        - name: Forbearance End Date
+          dataType:
+            type: Date
+        - name: Forbearance Start Date
+          dataType:
+            type: Date
+        - name: Forbearance Type
+          dataType:
+            type: String
+        - name: Foreclosure Appraisal Date
+          dataType:
+            type: Date
+        - name: Foreclosure Appraisal Value
+          dataType:
+            type: Integer
+        - name: Foreclosure Confirmed Sale Date
+          dataType:
+            type: Date
+        - name: Foreclosure Confirmed Sale Result
+          dataType:
+            type: String
+        - name: Foreclosure Contested Flag
+          dataType:
+            type: Boolean
+        - name: Foreclosure Deed Recording Date
+          dataType:
+            type: Date
+        - name: Foreclosure First Legal Complete Date
+          dataType:
+            type: Date
+        - name: Foreclosure First Legal Deadline Date
+          dataType:
+            type: Date
+        - name: Foreclosure First Legal File Date
+          dataType:
+            type: Date
+        - name: Foreclosure Flag
+          dataType:
+            type: Boolean
+        - name: Foreclosure Initial Referral Date
+          dataType:
+            type: Date
+        - name: Foreclosure Judgement Completed Date
+          dataType:
+            type: Date
+        - name: Foreclosure Method
+          dataType:
+            type: String
+        - name: Foreclosure Refer Date
+          dataType:
+            type: Date
+        - name: Foreclosure Scheduled Sale Date
+          dataType:
+            type: Date
+        - name: Foreclosure Service Complete Date
+          dataType:
+            type: Date
+        - name: Foreclosure Service Complete Flag
+          dataType:
+            type: Boolean
+        - name: Foreclosure Status
+          dataType:
+            type: String
+        - name: Foreclosure Status Date
+          dataType:
+            type: Date
+        - name: Foreign National
+          dataType:
+            type: String
+        - name: Franchise Name
+          dataType:
+            type: String
+        - name: Full Doc Flag
+          dataType:
+            type: Boolean
+        - name: Fully Disbursed Flag
+          dataType:
+            type: Boolean
+        - name: GeoTier
+          dataType:
+            type: Integer
+        - name: Gross Leasable Area
+          dataType:
+            type: Integer
+        - name: Ground Lease Expiration
+          dataType:
+            type: Date
+        - name: Ground Lease Flag
+          dataType:
+            type: Boolean
+        - name: Ground Up Flag
+          dataType:
+            type: Boolean
+        - name: Guarantee Fee
+          dataType:
+            type: Integer
+        - name: HECM Flag
+          dataType:
+            type: Boolean
+        - name: HECM Max Claim Amount
+          dataType:
+            type: Integer
+        - name: HECM Max Claim Amount Percent
+          dataType:
+            type: Integer
+        - name: 'HIL: Dealer Name'
+          dataType:
+            type: String
+        - name: 'HIL: Project Type'
+          dataType:
+            type: String
+        - name: HPI Adjusted Appraisal
+          dataType:
+            type: Integer
+        - name: HPI Adjusted Current LTV
+          dataType:
+            type: Integer
+        - name: HPML Flag
+          dataType:
+            type: Boolean
+        - name: HUD Notification First Legal Date
+          dataType:
+            type: Date
+        - name: Hermit Endorsement Status
+          dataType:
+            type: String
+        - name: High Cost Flag
+          dataType:
+            type: Boolean
+        - name: ITIN Flag
+          dataType:
+            type: Boolean
+        - name: In Special Servicing Flag
+          dataType:
+            type: Boolean
+        - name: Indemnity Flag
+          dataType:
+            type: Boolean
+        - name: Init Fixed Payment Period
+          dataType:
+            type: Integer
+        - name: Init Min Payment
+          dataType:
+            type: Integer
+        - name: Init NegAm Recast Period
+          dataType:
+            type: Integer
+        - name: Init Periodic Cap (Down)
+          dataType:
+            type: String
+        - name: Init Periodic Pay Cap
+          dataType:
+            type: Integer
+        - name: Initial Claim Filed Amount
+          dataType:
+            type: Float
+        - name: Initial Claim Filed Date
+          dataType:
+            type: Date
+        - name: Initial Claim Filing Due Date
+          dataType:
+            type: Date
+        - name: Initial Claim Received Amount
+          dataType:
+            type: Float
+        - name: Initial Claim Received Date
+          dataType:
+            type: Date
+        - name: Initial Claim Status
+          dataType:
+            type: String
+        - name: Inspection Complete Date
+          dataType:
+            type: Date
+        - name: Insurance Builder Risk Exp Date
+          dataType:
+            type: Date
+        - name: Intended Servicing Strategy
+          dataType:
+            type: String
+        - name: Interest Capitalized Amount
+          dataType:
+            type: Integer
+        - name: Interest Capitalized Date
+          dataType:
+            type: Date
+        - name: Interest Collection Type
+          dataType:
+            type: String
+        - name: Interest Reserve Holdback
+          dataType:
+            type: Float
+        - name: Investor Code
+          dataType:
+            type: String
+        - name: Investor Name
+          dataType:
+            type: String
+        - name: Is Secured Flag
+          dataType:
+            type: Boolean
+        - name: Is Securitization Vehicle Flag
+          dataType:
+            type: Boolean
+        - name: Issuer Loan ID
+          dataType:
+            type: String
+        - name: LOC Current Drawn Amount
+          dataType:
+            type: Float
+        - name: LOC Draw End Date
+          dataType:
+            type: Date
+        - name: LOC Draw Period
+          dataType:
+            type: Integer
+        - name: LOC Freeze Date
+          dataType:
+            type: Date
+        - name: LOC Freeze Reason
+          dataType:
+            type: String
+        - name: LOC Frozen Flag
+          dataType:
+            type: Boolean
+        - name: LOC Initial Draw Amount
+          dataType:
+            type: Integer
+        - name: LOC Line Status
+          dataType:
+            type: String
+        - name: LOC Max Curr Credit Line
+          dataType:
+            type: Integer
+        - name: LOC Max Original Credit Line
+          dataType:
+            type: Float
+        - name: LOC Repayment Period
+          dataType:
+            type: Integer
+        - name: LPMI Flag
+          dataType:
+            type: Boolean
+        - name: LTAIV
+          dataType:
+            type: Integer
+        - name: LTARV
+          dataType:
+            type: Integer
+        - name: LTC Fully Baked
+          dataType:
+            type: Integer
+        - name: Latest Market Value
+          dataType:
+            type: Integer
+        - name: Latest of Year Built/Renovated
+          dataType:
+            type: Integer
+        - name: Latitude
+          dataType:
+            type: Integer
+        - name: Lease in Place
+          dataType:
+            type: Integer
+        - name: Lease in Place Flag
+          dataType:
+            type: Boolean
+        - name: Leasehold Flag
+          dataType:
+            type: Boolean
+        - name: Legal Cost Advance Balance
+          dataType:
+            type: Float
+        - name: Legal Fee Advance Balance
+          dataType:
+            type: Float
+        - name: Lien Position
+          dataType:
+            type: String
+        - name: Line of Credit Flag
+          dataType:
+            type: Boolean
         - name: Liquid / Cash Reserves
           dataType:
-            type: Double
-        - name: Final Credit Grade
+            type: Float
+        - name: Liquidation Date
+          dataType:
+            type: Date
+        - name: Liquidation Proceeds
+          dataType:
+            type: Float
+        - name: Liquidation Type
+          dataType:
+            type: String
+        - name: Loan Age
+          dataType:
+            type: Integer
+        - name: Loan Boarded at WAM Date
+          dataType:
+            type: Date
+        - name: Loan Closing Date
+          dataType:
+            type: Date
+        - name: Loan Funding Date
+          dataType:
+            type: Date
+        - name: Loan Purpose
+          dataType:
+            type: String
+        - name: Loan Recourse Pct
+          dataType:
+            type: Integer
+        - name: Loan Recourse Type
+          dataType:
+            type: String
+        - name: Loan Sector
+          dataType:
+            type: String
+        - name: Lockbox Type
+          dataType:
+            type: String
+        - name: Lockout Period
+          dataType:
+            type: Integer
+        - name: Longitude
+          dataType:
+            type: Integer
+        - name: Loss Mitigation Approval Date
+          dataType:
+            type: Date
+        - name: Loss Mitigation End Date
+          dataType:
+            type: Date
+        - name: Loss Mitigation Flag
+          dataType:
+            type: Boolean
+        - name: Loss Mitigation Start Date
+          dataType:
+            type: Date
+        - name: Loss Mitigation Status
+          dataType:
+            type: String
+        - name: Loss Mitigation Type
+          dataType:
+            type: String
+        - name: MERS Flag
+          dataType:
+            type: Boolean
+        - name: MERS MIN Number
+          dataType:
+            type: String
+        - name: MI Active Flag
+          dataType:
+            type: Boolean
+        - name: MI Cert Num
+          dataType:
+            type: String
+        - name: MI Company
+          dataType:
+            type: String
+        - name: MI Coverage Amount ($)
+          dataType:
+            type: Integer
+        - name: MI Coverage Pct
+          dataType:
+            type: Integer
+        - name: MI Flag
+          dataType:
+            type: Boolean
+        - name: MI Policy Exp Date
+          dataType:
+            type: Date
+        - name: MI Type
+          dataType:
+            type: String
+        - name: MIC Endorsement Date
+          dataType:
+            type: Date
+        - name: MIC Endorsement Date (calc for dblookup)
+          dataType:
+            type: Integer
+        - name: MSA Code
+          dataType:
+            type: Integer
+        - name: MSA Name
+          dataType:
+            type: String
+        - name: Manufactured Home Flag
+          dataType:
+            type: Boolean
+        - name: Market Rent
+          dataType:
+            type: Integer
+        - name: Marketable Title Acquired Date
+          dataType:
+            type: Date
+        - name: Mod Appraisal Date
+          dataType:
+            type: Date
+        - name: Mod Appraisal Value
+          dataType:
+            type: Float
+        - name: Mod Capitalized Amount
+          dataType:
+            type: Float
+        - name: Mod Deferred Amount
+          dataType:
+            type: Float
+        - name: Mod Forgiven Interest Amount
+          dataType:
+            type: Integer
+        - name: Mod Forgiven Principal Amount
+          dataType:
+            type: Integer
+        - name: Mod Step Rate 1
+          dataType:
+            type: Integer
+        - name: Mod Step Rate 2
+          dataType:
+            type: Integer
+        - name: Mod Step Rate 3
+          dataType:
+            type: Integer
+        - name: Mod Step Rate 4
+          dataType:
+            type: Integer
+        - name: Mod Step Rate 5
+          dataType:
+            type: Integer
+        - name: Mod Step Start 1
+          dataType:
+            type: Date
+        - name: Mod Step Start 2
+          dataType:
+            type: Date
+        - name: Mod Step Start 3
+          dataType:
+            type: Date
+        - name: Mod Step Start 4
+          dataType:
+            type: Date
+        - name: Mod Step Start 5
+          dataType:
+            type: Date
+        - name: Model Loan ID
+          dataType:
+            type: String
+        - name: Modeling Repline
+          dataType:
+            type: String
+        - name: Modeling Scenario
+          dataType:
+            type: String
+        - name: Modification Date
+          dataType:
+            type: Date
+        - name: Modification Description
+          dataType:
+            type: String
+        - name: Modification Flag
+          dataType:
+            type: Boolean
+        - name: Monthly Debt All Borrowers
+          dataType:
+            type: Float
+        - name: Months Reserves
+          dataType:
+            type: Integer
+        - name: Months Since BK Discharge
+          dataType:
+            type: Integer
+        - name: Months Since FC Sale
+          dataType:
+            type: Integer
+        - name: Months in Default
+          dataType:
+            type: Integer
+        - name: Months to Next Rate Adj
+          dataType:
+            type: Integer
+        - name: Most Recent Appraisal Value
+          dataType:
+            type: Integer
+        - name: Most Recent Appraisal Value Date
+          dataType:
+            type: Date
+        - name: Most Recent Appraisal Value Method
+          dataType:
+            type: String
+        - name: Multiple Properties Flag
+          dataType:
+            type: Boolean
+        - name: NAICS Category
+          dataType:
+            type: Integer
+        - name: NAICS Code (3 Digit)
+          dataType:
+            type: Integer
+        - name: NAICS Code (6 Digit)
+          dataType:
+            type: Integer
+        - name: NDD Vector
+          dataType:
+            type: String
+        - name: NOD Sent Date
+          dataType:
+            type: Date
+        - name: NegAm Limit
+          dataType:
+            type: Integer
+        - name: Net Loan Interest Rate
+          dataType:
+            type: Integer
+        - name: Next Due Date Mths Prior 1
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 10
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 11
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 12
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 2
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 3
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 4
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 5
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 6
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 7
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 8
+          dataType:
+            type: Date
+        - name: Next Due Date Mths Prior 9
+          dataType:
+            type: Date
+        - name: Non Borrowing Spouse Flag
+          dataType:
+            type: Boolean
+        - name: Non-Warrantable Condo Flag
+          dataType:
+            type: Boolean
+        - name: Num Units
+          dataType:
+            type: Integer
+        - name: Number Of Properties
+          dataType:
+            type: Integer
+        - name: Number of Active Borrowers
+          dataType:
+            type: Integer
+        - name: Number of Bankruptcies
+          dataType:
+            type: Integer
+        - name: Number of Borrowers
+          dataType:
+            type: Integer
+        - name: Number of Extensions
+          dataType:
+            type: Integer
+        - name: Number of Modifications
+          dataType:
+            type: Integer
+        - name: OptionARM Flag
+          dataType:
+            type: Boolean
+        - name: Orig ARM Flag
+          dataType:
+            type: Boolean
+        - name: Orig Amortization Term
+          dataType:
+            type: Integer
+        - name: Orig Amortization Term (NPER Calc)
+          dataType:
+            type: Integer
+        - name: Orig Amortization Type
+          dataType:
+            type: String
+        - name: Orig Appraisal Date
+          dataType:
+            type: Date
+        - name: Orig Appraisal Value
+          dataType:
+            type: Float
+        - name: Orig Available Line of Credit
+          dataType:
+            type: Integer
+        - name: Orig Balloon Flag
+          dataType:
+            type: Boolean
+        - name: Orig Balloon Payment
+          dataType:
+            type: Integer
+        - name: Orig CLTV
+          dataType:
+            type: Integer
+        - name: Orig CLTV (Calc)
+          dataType:
+            type: Integer
+        - name: Orig Channel
+          dataType:
+            type: String
+        - name: Orig First Payment Date
+          dataType:
+            type: Date
+        - name: Orig Holdback Amount
+          dataType:
+            type: Float
+        - name: Orig Interest Only Exp Date
+          dataType:
+            type: Date
+        - name: Orig Interest Only Flag
+          dataType:
+            type: Boolean
+        - name: Orig Interest Only Term
+          dataType:
+            type: Integer
+        - name: Orig Jr LTV
+          dataType:
+            type: Integer
+        - name: Orig Jr LTV (Calc)
+          dataType:
+            type: Integer
+        - name: Orig Junior Loan Amount
+          dataType:
+            type: Float
+        - name: Orig LTC
+          dataType:
+            type: Integer
+        - name: Orig LTV
+          dataType:
+            type: Integer
+        - name: Orig LTV (Calc)
+          dataType:
+            type: Integer
+        - name: Orig Loan Amount
+          dataType:
+            type: Float
+        - name: Orig Loan Extended Flag
+          dataType:
+            type: Boolean
+        - name: Orig Loan Interest Rate
+          dataType:
+            type: Integer
+        - name: Orig Loan Maturity Date
+          dataType:
+            type: Date
+        - name: Orig Loan Term
+          dataType:
+            type: Integer
+        - name: Orig Loan Term (Calc to Curr Maturity)
+          dataType:
+            type: Integer
+        - name: Orig Loan Term (Calc to Orig Maturity)
+          dataType:
+            type: Integer
+        - name: Orig Occupancy Status
+          dataType:
+            type: String
+        - name: Orig PI Payment
+          dataType:
+            type: Float
+        - name: Orig PITI Payment
+          dataType:
+            type: Integer
+        - name: Orig PITIA Payment
+          dataType:
+            type: Integer
+        - name: Orig Pledged Assets
+          dataType:
+            type: Integer
+        - name: Orig Prepayment Penalty Flag
+          dataType:
+            type: Boolean
+        - name: Orig Sales Price
+          dataType:
+            type: Float
+        - name: Orig Sr LTV
+          dataType:
+            type: Integer
+        - name: Orig Sr LTV (Calc)
+          dataType:
+            type: Integer
+        - name: Orig TI Payment
+          dataType:
+            type: Float
+        - name: Original FICO
+          dataType:
+            type: Integer
+        - name: Original FICO Date
+          dataType:
+            type: Date
+        - name: Origination Discount Points ($)
+          dataType:
+            type: Float
+        - name: Origination Note Date
+          dataType:
+            type: Date
+        - name: Originator Loan Grade
+          dataType:
+            type: String
+        - name: Originator Loan ID
           dataType:
             type: String
         - name: Originator Name
@@ -1030,7 +1914,229 @@ sqlSources:
         - name: Originator Program
           dataType:
             type: String
+        - name: Other Advance Balance
+          dataType:
+            type: Integer
+        - name: Other Monthly Payment
+          dataType:
+            type: Integer
+        - name: PI Advance Balance
+          dataType:
+            type: Integer
+        - name: Parent Loan ID
+          dataType:
+            type: String
+        - name: Partial Claim Flag
+          dataType:
+            type: Boolean
+        - name: Partial Claim Received Amount
+          dataType:
+            type: Float
+        - name: Partial Claim Received Date
+          dataType:
+            type: Date
+        - name: Partial Claim Type
+          dataType:
+            type: String
+        - name: Participation Balance
+          dataType:
+            type: Integer
+        - name: Participation Flag
+          dataType:
+            type: Boolean
+        - name: Participation Percent
+          dataType:
+            type: Integer
+        - name: Pay History
+          dataType:
+            type: String
+        - name: Pay History 12 Mths
+          dataType:
+            type: String
+        - name: Pay History 24 Mths
+          dataType:
+            type: String
+        - name: Pay History 36 Mths
+          dataType:
+            type: String
+        - name: Pay History 60 Mths
+          dataType:
+            type: String
+        - name: Pay History Always Current
+          dataType:
+            type: Boolean
+        - name: Pay History Current for 12
+          dataType:
+            type: Boolean
+        - name: Pay History Current for 24
+          dataType:
+            type: Boolean
+        - name: Pay History Date
+          dataType:
+            type: Date
+        - name: Payment Benefit ACH
+          dataType:
+            type: Integer
+        - name: Payment Frequency
+          dataType:
+            type: String
+        - name: Payment Plan Description
+          dataType:
+            type: String
+        - name: Payoff Date
+          dataType:
+            type: Date
+        - name: Performance Status
+          dataType:
+            type: String
+        - name: Personal Guarantee
+          dataType:
+            type: Boolean
+        - name: Pool
+          dataType:
+            type: String
+        - name: Pool Ins Company
+          dataType:
+            type: String
+        - name: Pool Ins Stop Loss %
+          dataType:
+            type: Integer
+        - name: Post-Mod Amortization Term
+          dataType:
+            type: Integer
+        - name: Post-Mod Balance
+          dataType:
+            type: Integer
+        - name: Post-Mod First Payment Date
+          dataType:
+            type: Date
+        - name: Post-Mod Interest Rate
+          dataType:
+            type: Integer
+        - name: Post-Mod Maturity Date
+          dataType:
+            type: Date
+        - name: Post-Mod PI Payment
+          dataType:
+            type: Integer
+        - name: Post-Mod TI Payment
+          dataType:
+            type: Integer
+        - name: Pre Liquidation Escrow Advance Balance
+          dataType:
+            type: Float
+        - name: Pre Liquidation Principal Gross Balance
+          dataType:
+            type: Float
+        - name: Pre Liquidation Total Corporate Advance Balance
+          dataType:
+            type: Float
+        - name: Pre-Mod Delinquency Status
+          dataType:
+            type: String
+        - name: Pre-Mod Init Periodic Cap
+          dataType:
+            type: Integer
+        - name: Pre-Mod Interest Only Term
+          dataType:
+            type: Integer
+        - name: Pre-Mod Interest Rate
+          dataType:
+            type: Integer
+        - name: Pre-Mod Next Rate Adj Date
+          dataType:
+            type: Date
+        - name: Pre-Mod PI Payment
+          dataType:
+            type: Integer
+        - name: Pre-Mod Subseq Periodic Cap
+          dataType:
+            type: Integer
+        - name: Pre-Mod TI Payment
+          dataType:
+            type: Integer
+        - name: Prepayment Penalty Description
+          dataType:
+            type: String
+        - name: Prepayment Penalty Exp Date
+          dataType:
+            type: Date
+        - name: Prepayment Penalty Hard Term
+          dataType:
+            type: Integer
+        - name: Prepayment Penalty Percentage
+          dataType:
+            type: String
+        - name: Prepayment Penalty Period
+          dataType:
+            type: Integer
+        - name: Price Denomination
+          dataType:
+            type: String
+        - name: Principal Limit
+          dataType:
+            type: Float
+        - name: Prior Servicer Delinquency Status
+          dataType:
+            type: String
+        - name: Promo Expiration Date
+          dataType:
+            type: Date
+        - name: Promo Term
+          dataType:
+            type: Integer
+        - name: Promo Type
+          dataType:
+            type: String
+        - name: Property Annual Taxes
+          dataType:
+            type: Integer
         - name: Property City
+          dataType:
+            type: String
+        - name: Property Country
+          dataType:
+            type: String
+        - name: Property County
+          dataType:
+            type: String
+        - name: Property Description
+          dataType:
+            type: String
+        - name: Property Full Address
+          dataType:
+            type: String
+        - name: Property ID
+          dataType:
+            type: String
+        - name: Property Latest Value ($)
+          dataType:
+            type: Float
+        - name: Property Latest Value ($) (Appraisal or BPO Only)
+          dataType:
+            type: Float
+        - name: Property Latest Value ($) Prior Month
+          dataType:
+            type: Float
+        - name: Property Latest Value Date
+          dataType:
+            type: Date
+        - name: Property Latest Value Date (Appraisal or BPO Only)
+          dataType:
+            type: Date
+        - name: Property Latest Value Method
+          dataType:
+            type: String
+        - name: Property Latest Value Source
+          dataType:
+            type: String
+        - name: Property Name
+          dataType:
+            type: String
+        - name: Property Occupancy Condition
+          dataType:
+            type: String
+        - name: Property Ownership Type
           dataType:
             type: String
         - name: Property State
@@ -1039,120 +2145,603 @@ sqlSources:
         - name: Property Street
           dataType:
             type: String
+        - name: Property SubType
+          dataType:
+            type: String
+        - name: Property Type
+          dataType:
+            type: String
+        - name: Property Usage Type
+          dataType:
+            type: String
+        - name: Property Year Built
+          dataType:
+            type: Integer
+        - name: Property Year Renovated
+          dataType:
+            type: Integer
         - name: Property Zip
           dataType:
-            type: Bigint
-        - name: Servicer Name
-          dataType:
             type: String
-        - name: Mortgage Insurance Flag
+        - name: Purchase Basis
           dataType:
-            type: String
-        - name: MI Coverage Provider
+            type: Integer
+        - name: Purchase Due Diligence Cost
           dataType:
-            type: String
-        - name: MI Coverage Pct
+            type: Integer
+        - name: Purchase Hurdle
           dataType:
-            type: String
-        - name: Modification Flag
+            type: Integer
+        - name: Purchase Market Value
           dataType:
-            type: String
-        - name: Modification Type
+            type: Integer
+        - name: Purchase Other Cashflow
           dataType:
-            type: String
-        - name: Modification Date
-          dataType:
-            type: String
-        - name: Active Forbearance
-          dataType:
-            type: String
-        - name: Deferred Amount
-          dataType:
-            type: String
-        - name: Foreclosure Flag
-          dataType:
-            type: String
-        - name: Foreclosure Type
-          dataType:
-            type: String
-        - name: Initial Foreclosure Referral Date
-          dataType:
-            type: String
-        - name: Foreclosure Sale Scheduled Date
-          dataType:
-            type: String
-        - name: Foreclosure Sale Held Date
-          dataType:
-            type: String
-        - name: Escrow Advances
-          dataType:
-            type: Double
-        - name: Corprate Advances
-          dataType:
-            type: Double
-        - name: REO Flag
-          dataType:
-            type: String
-        - name: REO Conversion Date
-          dataType:
-            type: String
-        - name: Bankruptcy Flag
-          dataType:
-            type: String
-        - name: Bankruptcy Type
-          dataType:
-            type: String
-        - name: 3 Month Cashflow Velocity
-          dataType:
-            type: String
-        - name: 6 Month Cashflow Velocity
-          dataType:
-            type: String
-        - name: 12 Month Cashflow Velocity
-          dataType:
-            type: String
-        - name: 24 Month Cashflow Velocity
-          dataType:
-            type: String
-        - name: Dutch Flag
-          dataType:
-            type: String
-        - name: Num Units
-          dataType:
-            type: String
-        - name: Orig Interest Only Term
-          dataType:
-            type: Bigint
+            type: Integer
         - name: QM Status
           dataType:
             type: String
-        - name: Sector
+        - name: Qualification Method
           dataType:
             type: String
-        - name: WAM Group
+        - name: REO Appraisal Date
+          dataType:
+            type: Date
+        - name: REO Appraisal Value
+          dataType:
+            type: Integer
+        - name: REO Contract Date
+          dataType:
+            type: Date
+        - name: REO Contract Price
+          dataType:
+            type: Integer
+        - name: REO Conversion Date
+          dataType:
+            type: Date
+        - name: REO Estimated Closing Date
+          dataType:
+            type: Date
+        - name: REO Flag
+          dataType:
+            type: Boolean
+        - name: REO List Broker
           dataType:
             type: String
-        - name: Ground Up Flag
+        - name: REO List Date
+          dataType:
+            type: Date
+        - name: REO List Price
+          dataType:
+            type: Integer
+        - name: REO Offer Accepted Date
+          dataType:
+            type: Date
+        - name: REO Offer Amount
+          dataType:
+            type: Integer
+        - name: REO Original List Date
+          dataType:
+            type: Date
+        - name: REO Original List Price
+          dataType:
+            type: Integer
+        - name: REO Sale Date
+          dataType:
+            type: Date
+        - name: REO Sale Price
+          dataType:
+            type: Integer
+        - name: REO Status
+          dataType:
+            type: Date
+        - name: Rate Lock Date
+          dataType:
+            type: Date
+        - name: Rate Type
           dataType:
             type: String
-        - name: Extended Flag
+        - name: Rate Type Code
           dataType:
             type: String
-        - name: Number of Extensions
+        - name: Refinance Type
           dataType:
             type: String
-        - name: Bridge Loan Flag
+        - name: Rehab Budget
+          dataType:
+            type: Float
+        - name: Relocation Flag
+          dataType:
+            type: Boolean
+        - name: Remaining Amortization Term
+          dataType:
+            type: Integer
+        - name: Remaining Amortization Term (Inferred Calc)
+          dataType:
+            type: Integer
+        - name: Remaining Amortization Term (NPER Calc)
+          dataType:
+            type: Integer
+        - name: Remaining Interest Only Term
+          dataType:
+            type: Integer
+        - name: Remaining Loan Term
+          dataType:
+            type: Integer
+        - name: Remaining Loan Term (Calc to Curr Maturity)
+          dataType:
+            type: Integer
+        - name: Remaining Loan Term (Calc to Orig Maturity)
+          dataType:
+            type: Integer
+        - name: Remaining Prepayment Penalty Period
+          dataType:
+            type: Integer
+        - name: Repayment Start Date
+          dataType:
+            type: Date
+        - name: Repayment Type
           dataType:
             type: String
-        - name: Cap Rate
+        - name: Rvs Annual MIP Rate
+          dataType:
+            type: Integer
+        - name: Rvs Assignment Status 1
           dataType:
             type: String
-        - name: Asset Class
+        - name: Rvs Assignment Status 2
           dataType:
             type: String
+        - name: Rvs Assignment Status 3
+          dataType:
+            type: String
+        - name: Rvs At Risk Extension Approval Date
+          dataType:
+            type: Date
+        - name: Rvs At Risk Extension End Date
+          dataType:
+            type: Date
+        - name: Rvs At Risk Extension Flag
+          dataType:
+            type: Boolean
+        - name: Rvs At Risk Extension Reason
+          dataType:
+            type: String
+        - name: Rvs At Risk Extension Request Date
+          dataType:
+            type: Date
+        - name: Rvs Capitalized Interest Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Corporate Advances Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Curr Collectible Balance
+          dataType:
+            type: Float
+        - name: Rvs Curr Life Expectancy Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Curr Occupancy Date
+          dataType:
+            type: Date
+        - name: Rvs Curr Payment Type
+          dataType:
+            type: String
+        - name: Rvs Curr Repairs Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Curr Service Fee Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Curr TI Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Debenture Curtailment Date
+          dataType:
+            type: Date
+        - name: Rvs Debenture Curtailment Flag
+          dataType:
+            type: Boolean
+        - name: Rvs Debenture Curtailment Reason
+          dataType:
+            type: String
+        - name: Rvs Default Balance
+          dataType:
+            type: Float
+        - name: Rvs Expected Rate
+          dataType:
+            type: String
+        - name: Rvs First Year Property Charge Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Gross Principal Limit
+          dataType:
+            type: Float
+        - name: Rvs HUD D&P Approval Date
+          dataType:
+            type: Date
+        - name: Rvs Init Advance Amount
+          dataType:
+            type: Float
+        - name: Rvs Init Principal Limit
+          dataType:
+            type: Float
+        - name: Rvs Last Known Occupancy Date
+          dataType:
+            type: Date
+        - name: Rvs Latest Occupancy Certified Date
+          dataType:
+            type: Date
+        - name: Rvs Legal Advances Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Legal Cost Advances Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Legal Fee Advances Since D&P
+          dataType:
+            type: Float
+        - name: Rvs MIP Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Monthly MIP
+          dataType:
+            type: Float
+        - name: Rvs Net Principal Limit
+          dataType:
+            type: Float
+        - name: Rvs Orig Borrower Equity Pct
+          dataType:
+            type: Integer
+        - name: Rvs Orig Lender Equity Pct
+          dataType:
+            type: Integer
+        - name: Rvs Orig Life Expectancy Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Orig Payment Type
+          dataType:
+            type: String
+        - name: Rvs Orig Repairs Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Orig Service Fee Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Orig TI Set Aside
+          dataType:
+            type: Float
+        - name: Rvs Other Advances Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Payments Suspended Flag
+          dataType:
+            type: Boolean
+        - name: Rvs Principal Limit Growth Rate
+          dataType:
+            type: Integer
+        - name: Rvs Principal Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Repay Plan Flag
+          dataType:
+            type: Boolean
+        - name: Rvs Repay Plan Letter Sent Date
+          dataType:
+            type: Date
+        - name: Rvs Repay Plan Signed Letter Received Date
+          dataType:
+            type: Date
+        - name: Rvs Repayments Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Scheduled Monthly Payment
+          dataType:
+            type: Float
+        - name: Rvs Servicing Fees Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Tax and Insurance Advances Since D&P
+          dataType:
+            type: Float
+        - name: Rvs Term Payments Remaining
+          dataType:
+            type: Integer
+        - name: Rvs Total Advances Since D&P
+          dataType:
+            type: Float
+        - name: SBA Approval Date
+          dataType:
+            type: Date
+        - name: SBA Approval Required
+          dataType:
+            type: Boolean
+        - name: SBA Assigned Office
+          dataType:
+            type: String
+        - name: SBA Guaranty Amount
+          dataType:
+            type: Integer
+        - name: SBA PLP Number
+          dataType:
+            type: String
+        - name: SCRA Flag
+          dataType:
+            type: Boolean
+        - name: STAR Program Flag
+          dataType:
+            type: Boolean
+        - name: School For Profit Flag
+          dataType:
+            type: Boolean
+        - name: School Name
+          dataType:
+            type: String
+        - name: School Proprietary Flag
+          dataType:
+            type: Boolean
+        - name: School State
+          dataType:
+            type: String
+        - name: School Type
+          dataType:
+            type: String
+        - name: Scratch and Dent Reason
+          dataType:
+            type: String
+        - name: Secured By
+          dataType:
+            type: String
+        - name: Securitization Ineligibility Reason
+          dataType:
+            type: String
+        - name: Self-Employment Flag
+          dataType:
+            type: Boolean
+        - name: Seller
+          dataType:
+            type: String
+        - name: Seller Loan ID
+          dataType:
+            type: String
+        - name: Seller Product Type
+          dataType:
+            type: String
+        - name: Senior Encumberances Flag
+          dataType:
+            type: Boolean
+        - name: Senior Lien Current Balance
+          dataType:
+            type: Float
+        - name: Senior Lien Hybrid Period
+          dataType:
+            type: Integer
+        - name: Senior Lien Loan Interest Rate
+          dataType:
+            type: Integer
+        - name: Senior Lien Loan Type
+          dataType:
+            type: String
+        - name: Senior Lien Neg Am Limit
+          dataType:
+            type: Integer
+        - name: Senior Lien Original Balance
+          dataType:
+            type: Float
+        - name: Senior Lien Original Balance (Calc)
+          dataType:
+            type: Float
+        - name: Senior Lien Origination Note Date
+          dataType:
+            type: Date
+        - name: Servicer Claim Status
+          dataType:
+            type: String
+        - name: Servicer Claim Type
+          dataType:
+            type: String
+        - name: Servicer Comments
+          dataType:
+            type: String
+        - name: Servicer Loan ID
+          dataType:
+            type: String
+        - name: Servicer Name
+          dataType:
+            type: String
+        - name: Servicer Owner Entity
+          dataType:
+            type: String
+        - name: Short Sale Appraisal Date
+          dataType:
+            type: Date
+        - name: Short Sale Appraisal Value
+          dataType:
+            type: Integer
+        - name: Short Sale Deed Recording Date
+          dataType:
+            type: Date
+        - name: Short Sale Flag
+          dataType:
+            type: Boolean
+        - name: Short Term Rental Flag
+          dataType:
+            type: Boolean
+        - name: Single Tenant Flag
+          dataType:
+            type: Boolean
+        - name: Site Visit Flag
+          dataType:
+            type: Boolean
+        - name: Special Servicer Name
+          dataType:
+            type: String
+        - name: Stabilized DSCR
+          dataType:
+            type: Integer
+        - name: Stabilized Debt Yield
+          dataType:
+            type: Integer
+        - name: Step Flag
+          dataType:
+            type: Boolean
+        - name: Step Schedule
+          dataType:
+            type: String
+        - name: Subpool
+          dataType:
+            type: String
+        - name: Subseq NegAm Recast Period
+          dataType:
+            type: Integer
+        - name: Subseq Payment Reset Period
+          dataType:
+            type: Integer
+        - name: Subseq Periodic Cap (Down)
+          dataType:
+            type: String
+        - name: Subseq Periodic Pay Cap
+          dataType:
+            type: Integer
+        - name: Supplemental Claim Filed Amount
+          dataType:
+            type: Float
+        - name: Supplemental Claim Filed Date
+          dataType:
+            type: Date
+        - name: Supplemental Claim Filing Due Date
+          dataType:
+            type: Date
+        - name: Supplemental Claim Received Amount
+          dataType:
+            type: Float
+        - name: Supplemental Claim Received Date
+          dataType:
+            type: Date
+        - name: Supplemental Claim Status
+          dataType:
+            type: String
+        - name: Suspense Balance
+          dataType:
+            type: Integer
+        - name: Svc Advance Method
+          dataType:
+            type: String
+        - name: Svc Fee Amt ($)
+          dataType:
+            type: Integer
+        - name: Svc Fee Balance
+          dataType:
+            type: Integer
+        - name: Svc Fee Rate (%)
+          dataType:
+            type: Integer
+        - name: Svc Fee Type
+          dataType:
+            type: String
+        - name: TPR Vendor
+          dataType:
+            type: String
+        - name: Title Insurance Agency
+          dataType:
+            type: String
+        - name: Title Policy
+          dataType:
+            type: String
+        - name: Title Search
+          dataType:
+            type: String
+        - name: Total All Advance Balance
+          dataType:
+            type: Integer
+        - name: Total Combined Monthly Income
+          dataType:
+            type: Float
+        - name: Total Combined Other Income
+          dataType:
+            type: Integer
+        - name: Total Combined Wage Income
+          dataType:
+            type: Integer
+        - name: Total Housing Expenses
+          dataType:
+            type: Float
+        - name: Total Legal Advances
+          dataType:
+            type: String
+        - name: Total Servicer Advance Balance
+          dataType:
+            type: Float
+        - name: Total Tax and Insurance Advances
+          dataType:
+            type: String
+        - name: Total UPB & Deferred Balance
+          dataType:
+            type: Integer
+        - name: UCC Flag
+          dataType:
+            type: String
+        - name: UPB Next Period
+          dataType:
+            type: Float
+        - name: USDA Flag
+          dataType:
+            type: Boolean
+        - name: Unit of Measure
+          dataType:
+            type: String
+        - name: VA Flag
+          dataType:
+            type: Boolean
+        - name: Vacancy Date
+          dataType:
+            type: Date
+        - name: Vendor Price
+          dataType:
+            type: Float
+        - name: WAM Comment
+          dataType:
+            type: String
+        - name: WAM Credit Risk Score
+          dataType:
+            type: Integer
+        - name: WAM ID
+          dataType:
+            type: String
+        - name: WAM Loan Description
+          dataType:
+            type: String
+        - name: WAM Loan Type
+          dataType:
+            type: String
+        - name: WAM Owner Entity
+          dataType:
+            type: String
+        - name: WAM Owner Fund
+          dataType:
+            type: String
+        - name: WAM Product Type
+          dataType:
+            type: String
+        - name: WAM Purchase Price
+          dataType:
+            type: Integer
+        - name: WAM Reference Index
+          dataType:
+            type: String
+        - name: Waterfall Sector
+          dataType:
+            type: String
+        - name: Years in Home
+          dataType:
+            type: Integer
+        - name: Youngest Living Borrower Age
+          dataType:
+            type: Integer
       description: null
       author: tanmay@prophecy.io
-      createdAt: '2025-11-30 15:27:36'
+      createdAt: '2025-11-30 13:21:38'
       tableType: table
 sqlUnreferencedSources: {}
 sqlPipeline:
@@ -1184,7 +2773,7 @@ sqlOrchestratorPipelines:
     files:
     - pipelines/ref_pipe_waterfall.py
     - .prophecy/ide/pipelines/ref_pipe_waterfall.json
-    - models/ref_pipe_waterfall/ref_pipe_waterfall__as_of_date_yyyymmdd_reformat.sql
     - models/ref_pipe_waterfall/schema.yml
+    - models/ref_pipe_waterfall/ref_pipe_waterfall__sqlstatement_1.sql
     createdAt: '2025-11-30 14:24:41'
 sqlBusinessApps: {}

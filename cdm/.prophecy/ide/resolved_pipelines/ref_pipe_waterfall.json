@@ -19,8 +19,8 @@
       "component" : "Dataset",
       "metadata" : {
         "label" : "gsmbs_expected_output",
-        "x" : 140,
-        "y" : -280,
+        "x" : 100,
+        "y" : -180,
         "phase" : 0
       },
       "properties" : {
@@ -35,35 +35,73 @@
         "inputs" : [ ],
         "outputs" : [ {
           "id" : "MDB4Vm7I",
-          "slug" : "out"
+          "slug" : "out",
+          "dataExplorerProps" : {
+            "sorts" : [ {
+              "exp" : {
+                "type" : "Field",
+                "value" : "Credit Line Usage Ratio"
+              },
+              "type" : "Simple",
+              "order" : {
+                "type" : "Desc"
+              }
+            } ],
+            "filter" : {
+              "type" : "Composite",
+              "op" : {
+                "type" : "AND"
+              },
+              "filters" : [ ]
+            }
+          }
         } ],
         "isCustomOutputSchema" : false
       },
       "index" : 1
     },
-    "as_of_date_yyyym##LV75Oimr" : {
-      "id" : "as_of_date_yyyym##LV75Oimr",
+    "BHwkH_fHM8TOQw67WLFow$$a6-WJuctRaPS6Ugje5UvQ" : {
+      "id" : "BHwkH_fHM8TOQw67WLFow$$a6-WJuctRaPS6Ugje5UvQ",
       "component" : "Model",
       "metadata" : {
-        "label" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat",
+        "label" : "ref_pipe_waterfall__sqlstatement_1",
         "phase" : 0
       },
       "properties" : {
-        "modelName" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat"
+        "modelName" : "ref_pipe_waterfall__sqlstatement_1"
       },
       "visualMetaInfo" : {
-        "visualProcessIds" : [ "as_of_date_yyyymmdd_reformat_VCKRdeEx", "as_of_date_yyyym##LV75Oimr", "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm" ],
+        "visualProcessIds" : [ "sqlstatement_1_0YVA6BOfziCILnVTa92qM$$uhYvZtr5SmXofIvoKUnPR", "BHwkH_fHM8TOQw67WLFow$$a6-WJuctRaPS6Ugje5UvQ", "C9HrNyURlM6qMO9vfysrG$$Er_aTu7xa0mv-9yhmEtYm" ],
         "type" : "ephemeral",
         "isTemporaryTable" : true
       },
       "ports" : {
         "inputs" : [ {
-          "id" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat_in_0",
+          "id" : "ref_pipe_waterfall__sqlstatement_1_in_0",
           "slug" : "in_0"
         } ],
         "outputs" : [ {
-          "id" : "ref_pipe_waterfall__as_of_date_yyyymmdd_reformat_out_0",
-          "slug" : "out_0"
+          "id" : "ref_pipe_waterfall__sqlstatement_1_out_0",
+          "slug" : "out_0",
+          "dataExplorerProps" : {
+            "sorts" : [ {
+              "exp" : {
+                "type" : "Field",
+                "value" : "Credit Line Usage Ratio"
+              },
+              "type" : "Simple",
+              "order" : {
+                "type" : "Desc"
+              }
+            } ],
+            "filter" : {
+              "type" : "Composite",
+              "op" : {
+                "type" : "AND"
+              },
+              "filters" : [ ]
+            }
+          }
         } ],
         "isCustomOutputSchema" : false
       }
