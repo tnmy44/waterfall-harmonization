@@ -2773,7 +2773,5 @@ sqlOrchestratorPipelines:
     files:
     - pipelines/ref_pipe_waterfall.py
     - .prophecy/ide/pipelines/ref_pipe_waterfall.json
-    - models/ref_pipe_waterfall/schema.yml
-    - models/ref_pipe_waterfall/ref_pipe_waterfall__sqlstatement_1.sql
     createdAt: '2025-11-30 14:24:41'
 sqlBusinessApps: {}
