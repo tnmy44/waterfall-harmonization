@@ -96,6 +96,9 @@ sqlSources:
         - name: ARM Round Flag
           dataType:
             type: Boolean
+        - name: As Of Date
+          dataType:
+            type: Date
         - name: BPO Date
           dataType:
             type: Date
@@ -123,6 +126,9 @@ sqlSources:
         - name: Borr 1 Other Income
           dataType:
             type: Integer
+        - name: Borr 1 Residency Status
+          dataType:
+            type: String
         - name: Borr 1 Wage Income
           dataType:
             type: Integer
@@ -144,6 +150,9 @@ sqlSources:
         - name: Borr 2 Other Income
           dataType:
             type: Integer
+        - name: Borr 2 Residency Status
+          dataType:
+            type: String
         - name: Borr 2 Wage Income
           dataType:
             type: Integer
@@ -151,6 +160,9 @@ sqlSources:
           dataType:
             type: Boolean
         - name: Buydown Period
+          dataType:
+            type: Integer
+        - name: 'CRE Financials: UW DSCR (NOI)'
           dataType:
             type: Integer
         - name: Cash Out Amount
@@ -168,6 +180,9 @@ sqlSources:
         - name: 'Credit: Number of Trade Lines'
           dataType:
             type: Integer
+        - name: Curr Balloon Flag
+          dataType:
+            type: Boolean
         - name: Curr CLTV
           dataType:
             type: Integer
@@ -183,6 +198,9 @@ sqlSources:
         - name: Curr Occupancy Status
           dataType:
             type: String
+        - name: Curr PI Payment
+          dataType:
+            type: Float
         - name: Curr Payment Paid Thru Date
           dataType:
             type: Date
@@ -192,12 +210,27 @@ sqlSources:
         - name: Current FICO
           dataType:
             type: Integer
+        - name: Current FICO Date
+          dataType:
+            type: Date
         - name: Current Other Payment
           dataType:
             type: Float
         - name: Current Payment Amount Due
           dataType:
             type: Float
+        - name: 'DD: Compliance Event Grade'
+          dataType:
+            type: String
+        - name: 'DD: Credit Event Grade'
+          dataType:
+            type: String
+        - name: 'DD: Overall Grade'
+          dataType:
+            type: String
+        - name: 'DD: Property Event Grade'
+          dataType:
+            type: String
         - name: DTI Ratio
           dataType:
             type: Integer
@@ -213,6 +246,12 @@ sqlSources:
         - name: 'Financing: Advance Rate'
           dataType:
             type: Integer
+        - name: First-time Home Buyer
+          dataType:
+            type: Boolean
+        - name: Forbearance Type
+          dataType:
+            type: String
         - name: High Cost Flag
           dataType:
             type: Boolean
@@ -333,18 +372,33 @@ sqlSources:
         - name: Original FICO
           dataType:
             type: Integer
+        - name: Original FICO Date
+          dataType:
+            type: Date
         - name: Origination Discount Points ($)
           dataType:
             type: Float
         - name: Origination Note Date
           dataType:
             type: Date
+        - name: Originator Loan Grade
+          dataType:
+            type: String
         - name: Originator Name
+          dataType:
+            type: String
+        - name: Originator Program
+          dataType:
+            type: String
+        - name: Pay History 12 Mths
           dataType:
             type: String
         - name: Pay History 24 Mths
           dataType:
             type: String
+        - name: Pay History Current for 24
+          dataType:
+            type: Boolean
         - name: Prepayment Penalty Description
           dataType:
             type: String
@@ -378,6 +432,9 @@ sqlSources:
         - name: Relocation Flag
           dataType:
             type: Boolean
+        - name: Remaining Prepayment Penalty Period
+          dataType:
+            type: Integer
         - name: Self-Employment Flag
           dataType:
             type: Boolean
@@ -387,6 +444,12 @@ sqlSources:
         - name: Seller Loan ID
           dataType:
             type: String
+        - name: Seller Product Type
+          dataType:
+            type: String
+        - name: Senior Lien Current Balance
+          dataType:
+            type: Float
         - name: Senior Lien Hybrid Period
           dataType:
             type: Integer
@@ -402,6 +465,9 @@ sqlSources:
         - name: Servicer Name
           dataType:
             type: String
+        - name: Short Term Rental Flag
+          dataType:
+            type: Boolean
         - name: Subseq NegAm Recast Period
           dataType:
             type: Integer
