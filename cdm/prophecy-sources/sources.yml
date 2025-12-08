@@ -1,15 +1,33 @@
+---
 version: 2
 sources:
-- name: waterfall_harmonizer_cdm1
-  database: waterfall-harmonizer
-  schema: cdm
+- name: "waterfall_harmonizer_cdm1"
+  database: "waterfall-harmonizer"
+  schema: "cdm"
+  config:
+    tags:
+    - "source:waterfall_harmonizer_cdm1"
   tables:
-  - name: all_cols
+  - name: "all_cols"
+    tests:
+    - not_null:
+        config:
+          fail_calc: "count(*)"
+          tags:
+          - "test:not_null"
+        column_name: "\"`Orig Loan Amount`\""
+    - unique:
+        config:
+          fail_calc: "count(*)"
+          tags:
+          - "test:unique"
+        column_name: "\"`Seller Loan ID`\""
     config:
       tags:
-      - pipeline:cdm_pipe_waterfall
+      - "pipeline:cdm_pipe_waterfall"
+      - "table:all_cols"
     columns:
-    - name: 4506T Flag
+    - name: "4506T Flag"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>4506T Flag</column_name>\n        <purpose>Boolean indicator\
         \ of whether a Transcript of Tax Return (received pursuant to the filing of\
@@ -24,8 +42,8 @@ sources:
         \ a baseline confidence score of 0.15.</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Boolean
-    - name: ARM Index
+        type: "Boolean"
+    - name: "ARM Index"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>ARM Index</column_name>\n        <purpose>Specifies\
         \ the type of index used to determine the interest rate at each adjustment\
@@ -56,8 +74,8 @@ sources:
         \                <mode>Additive</mode>\n            </transformation>\n  \
         \      </transformations>"
       dataType:
-        type: String
-    - name: ARM Initial Fixed Rate Period
+        type: "String"
+    - name: "ARM Initial Fixed Rate Period"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>ARM Initial Fixed Rate Period</column_name>\n        <purpose>Original\
         \ number of months until the first rate adjustment in a hybrid adjustable-rate\
@@ -85,8 +103,8 @@ sources:
         \          <condition>Applied when ARM Initial Fixed Rate Period is missing\
         \ AND both"
       dataType:
-        type: Integer
-    - name: ARM Initial Rate Adj Cap
+        type: "Integer"
+    - name: "ARM Initial Rate Adj Cap"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>ARM Initial Rate Adj Cap</column_name>\n        <purpose>Maximum\
         \ percentage by which the note rate may change at the first rate adjustment\
@@ -116,8 +134,8 @@ sources:
         \ </data_logic>\n            <transformation_rules>\n                • Primary:\
         \ Scale from percentage format (1-100) to decimal format (0-1) by"
       dataType:
-        type: Integer
-    - name: ARM Lookback Days
+        type: "Integer"
+    - name: "ARM Lookback Days"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>ARM Lookback Days</column_name>\n        <purpose>The number\
         \ of days prior to the interest rate adjustment date to retrieve the index\
@@ -133,8 +151,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: ARM Margin
+        type: "Integer"
+    - name: "ARM Margin"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>ARM Margin</column_name>\n        <purpose>The percentage\
         \ spread between the ARM Index value and the mortgage interest rate, as stated\
@@ -163,8 +181,8 @@ sources:
         \ <0.16)</trigger>\n                <operation>Divide by 100 to normalize\
         \ to decimal format</operation>\n                <condition>Value is non-"
       dataType:
-        type: Integer
-    - name: ARM Max Rate
+        type: "Integer"
+    - name: "ARM Max Rate"
       description: "```\n<column_specification>\n    <column_name>ARM Max Rate</column_name>\n\
         \    <purpose>The maximum interest rate that can be in effect during the life\
         \ of an adjustable-rate mortgage (ARM) loan.</purpose>\n    <data_type_and_format>Numeric;\
@@ -190,8 +208,8 @@ sources:
         \ Values evenly divisible by 0.125 (1/8) when multiplied appropriately suggest\
         \ rate granularity\n            •"
       dataType:
-        type: Integer
-    - name: ARM Min Rate
+        type: "Integer"
+    - name: "ARM Min Rate"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>ARM Min Rate</column_name>\n        <purpose>The minimum\
         \ interest rate that can be in effect during the life of an adjustable-rate\
@@ -219,8 +237,8 @@ sources:
         \ values reduce confidence.\n                Recognition score normalized\
         \ by non-null count and compared across both decimal scales (0-0.16 and 0.1-"
       dataType:
-        type: Integer
-    - name: ARM Periodic Cap
+        type: "Integer"
+    - name: "ARM Periodic Cap"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>ARM Periodic Cap</column_name>\n        <purpose>Maximum\
         \ percentage by which the note rate may change at each rate adjustment date\
@@ -248,8 +266,8 @@ sources:
         \ by 100)</description>\n                <application_condition>When ARM Periodic\
         \ Cap is non-missing, positive, and greater than"
       dataType:
-        type: Integer
-    - name: ARM Rate Adj Frequency
+        type: "Integer"
+    - name: "ARM Rate Adj Frequency"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>ARM Rate Adj Frequency</column_name>\n        <purpose>Specifies\
         \ the number of months between each subsequent rate adjustment in an adjustable-rate\
@@ -277,8 +295,8 @@ sources:
         \            </transformation>\n            <transformation priority=\"2\"\
         >\n                <condition>ARM Rate Adj Frequency contains period text"
       dataType:
-        type: Integer
-    - name: ARM Round Factor
+        type: "Integer"
+    - name: "ARM Round Factor"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>ARM Round Factor</column_name>\n        <purpose>The\
         \ percentage to which an adjusted interest rate is to be rounded in adjustable\
@@ -291,8 +309,8 @@ sources:
         \ terminology in header</data_logic>\n        </recognition_signals>\n   \
         \ </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: ARM Round Flag
+        type: "Integer"
+    - name: "ARM Round Flag"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>ARM Round Flag</column_name>\n        <purpose>Indicator\
         \ of the rounding method applied to an adjusted interest rate in an ARM (Adjustable\
@@ -308,8 +326,8 @@ sources:
         \     </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Boolean
-    - name: As Of Date
+        type: "Boolean"
+    - name: "As Of Date"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>As Of Date</column_name>\n        <purpose>Reference\
         \ date for loan balance, servicing metrics, and other reported data; typically\
@@ -337,8 +355,8 @@ sources:
         \ threshold=\"0.9\">\n                Condition: Column is populated AND length\
         \ ≥ 6 AND matches YYYY[non-alphan"
       dataType:
-        type: Date
-    - name: BPO Date
+        type: "Date"
+    - name: "BPO Date"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>BPO Date</column_name>\n        <purpose>Internal SItusAMC\
         \ data point representing the current valuation date of the property across\
@@ -349,8 +367,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Date
-    - name: BPO Value
+        type: "Date"
+    - name: "BPO Value"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>BPO Value</column_name>\n        <purpose>Current valuation\
         \ of the property from Broker Price Opinion (BPO) data across all available\
@@ -370,8 +388,8 @@ sources:
         \ or out-of-range values.\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Float
-    - name: Borr 1 Asset Verification
+        type: "Float"
+    - name: "Borr 1 Asset Verification"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 1 Asset Verification</column_name>\n        <purpose>Indicates\
         \ the extent to which the primary borrower's assets have been verified.</purpose>\n\
@@ -390,8 +408,8 @@ sources:
         \ variable.\n            </data_logic>\n        </recognition_signals>\n \
         \   </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: String
-    - name: Borr 1 Credit Score
+        type: "String"
+    - name: "Borr 1 Credit Score"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Borr 1 Credit Score</column_name>\n        <purpose>Most\
         \ recent primary borrower credit score (FICO)</purpose>\n        <data_type_and_format>Numeric\
@@ -423,8 +441,8 @@ sources:
         \ and is not missing</condition>\n                <action>Fallback/populate\
         \ from \"Original FICO\" column</action>"
       dataType:
-        type: Integer
-    - name: Borr 1 Credit Score Date
+        type: "Integer"
+    - name: "Borr 1 Credit Score Date"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Borr 1 Credit Score Date</column_name>\n        <purpose>Date\
         \ on which the most recent primary borrower's credit score (FICO) was obtained</purpose>\n\
@@ -451,8 +469,8 @@ sources:
         \ itself\n        </transformation_logic>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Date
-    - name: Borr 1 Employment Verification
+        type: "Date"
+    - name: "Borr 1 Employment Verification"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 1 Employment Verification</column_name>\n     \
         \   <purpose>Indicates the extent to which the primary borrower's employment\
@@ -467,8 +485,8 @@ sources:
         \ or single-digit integers (0-9 range)</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: String
-    - name: Borr 1 Income Verification
+        type: "String"
+    - name: "Borr 1 Income Verification"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 1 Income Verification</column_name>\n        <purpose>Indicates\
         \ the extent to which the primary borrower's income has been verified.</purpose>\n\
@@ -484,8 +502,8 @@ sources:
         \      </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Borr 1 Length of Employment
+        type: "String"
+    - name: "Borr 1 Length of Employment"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 1 Length of Employment</column_name>\n        <purpose>The\
         \ number of years of service with the primary borrower's current employer\
@@ -507,8 +525,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: Borr 1 Other Income
+        type: "Integer"
+    - name: "Borr 1 Other Income"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 1 Other Income</column_name>\n        <purpose>Monthly\
         \ non-wage income amount for the primary borrower.</purpose>\n        <data_type_and_format>Numeric</data_type_and_format>\n\
@@ -518,8 +536,8 @@ sources:
         \ \"borr\" (borrower), \"other\", and \"income\"</header_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Borr 1 Residency Status
+        type: "Integer"
+    - name: "Borr 1 Residency Status"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 1 Residency Status</column_name>\n        <purpose>Classification\
         \ of the primary borrower's residency and citizenship status (e.g., US Citizen,\
@@ -533,8 +551,8 @@ sources:
         \    </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Borr 1 Wage Income
+        type: "String"
+    - name: "Borr 1 Wage Income"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 1 Wage Income</column_name>\n        <purpose>Monthly\
         \ base wage income for the primary borrower.</purpose>\n        <data_type_and_format>Numeric</data_type_and_format>\n\
@@ -546,8 +564,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: Borr 2 Asset Verification
+        type: "Integer"
+    - name: "Borr 2 Asset Verification"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 2 Asset Verification</column_name>\n        <purpose>Asset\
         \ verification status or classification for the second borrower in a loan\
@@ -564,8 +582,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Borr 2 Credit Score
+        type: "String"
+    - name: "Borr 2 Credit Score"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 2 Credit Score</column_name>\n        <purpose>Most\
         \ recent credit score for the co-borrower (secondary borrower)</purpose>\n\
@@ -594,8 +612,8 @@ sources:
         \               <condition>When Borr 2 Credit Score is missing AND Original\
         \ FICO is present (non"
       dataType:
-        type: Integer
-    - name: Borr 2 Employment Verification
+        type: "Integer"
+    - name: "Borr 2 Employment Verification"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 2 Employment Verification</column_name>\n     \
         \   <purpose>Employment verification status or method for the second borrower</purpose>\n\
@@ -611,8 +629,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Borr 2 Income Verification
+        type: "String"
+    - name: "Borr 2 Income Verification"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Borr 2 Income Verification</column_name>\n        <purpose>Verification\
         \ status or level of income documentation for a co-borrower or second borrower</purpose>\n\
@@ -636,8 +654,8 @@ sources:
         \     </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Borr 2 Length of Employment
+        type: "String"
+    - name: "Borr 2 Length of Employment"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 2 Length of Employment</column_name>\n        <purpose>The\
         \ number of years of service with the co-borrower's current employer as of\
@@ -655,8 +673,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: Borr 2 Other Income
+        type: "Integer"
+    - name: "Borr 2 Other Income"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 2 Other Income</column_name>\n        <purpose>Monthly\
         \ other (non-wage) income for all other borrowers (co-borrowers).</purpose>\n\
@@ -668,8 +686,8 @@ sources:
         \ 'income'</header_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Borr 2 Residency Status
+        type: "Integer"
+    - name: "Borr 2 Residency Status"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 2 Residency Status</column_name>\n        <purpose>Classification\
         \ of coborrower (secondary borrower) residency and citizenship status (e.g.,\
@@ -682,8 +700,8 @@ sources:
         \ 'flag')</header_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: String
-    - name: Borr 2 Wage Income
+        type: "String"
+    - name: "Borr 2 Wage Income"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Borr 2 Wage Income</column_name>\n        <purpose>Monthly\
         \ base wage income for all other borrowers (co-borrowers).</purpose>\n   \
@@ -697,8 +715,8 @@ sources:
         \ as a group (strong signal)\n            </header_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Broker Flag
+        type: "Integer"
+    - name: "Broker Flag"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Broker Flag</column_name>\n        <purpose>Indicates\
         \ whether a broker took the application.</purpose>\n        <data_type_and_format>Boolean</data_type_and_format>\n\
@@ -713,8 +731,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Boolean
-    - name: Buydown Period
+        type: "Boolean"
+    - name: "Buydown Period"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Buydown Period</column_name>\n        <purpose>Term\
         \ in months for how long the rate of the loan has been temporarily bought\
@@ -727,8 +745,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: 'CRE Financials: UW DSCR (NOI)'
+        type: "Integer"
+    - name: "CRE Financials: UW DSCR (NOI)"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>CRE Financials: UW DSCR (NOI)</column_name>\n      \
         \  <purpose>Underwritten or Original Debt Service Coverage Ratio calculated\
@@ -749,8 +767,8 @@ sources:
         \ DSCR (NOI)])\n            Mode: append/alternative\n        </fallback_logic>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Cash Out Amount
+        type: "Integer"
+    - name: "Cash Out Amount"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Cash Out Amount</column_name>\n        <purpose>The\
         \ net cash amount disbursed to borrower in a cash-out refinance, calculated\
@@ -776,8 +794,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Float
-    - name: Credit Line Usage Ratio
+        type: "Float"
+    - name: "Credit Line Usage Ratio"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Credit Line Usage Ratio</column_name>\n        <purpose>Measure\
         \ of credit utilization, calculated as the sum of credit balances divided\
@@ -792,8 +810,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: 'Credit: Longest Trade Line'
+        type: "Integer"
+    - name: "Credit: Longest Trade Line"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Credit: Longest Trade Line</column_name>\n        <purpose>Credit\
         \ bureau information representing the age or duration of the longest active\
@@ -810,8 +828,8 @@ sources:
         \ health score\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: 'Credit: Maximum Trade Line'
+        type: "Integer"
+    - name: "Credit: Maximum Trade Line"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Credit: Maximum Trade Line</column_name>\n        <purpose>Maximum\
         \ trade line amount from credit bureau information</purpose>\n        <data_type_and_format>Numeric\
@@ -826,8 +844,8 @@ sources:
         \ score environment variable</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Float
-    - name: 'Credit: Number of Trade Lines'
+        type: "Float"
+    - name: "Credit: Number of Trade Lines"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Credit: Number of Trade Lines</column_name>\n      \
         \  <purpose>Count of open trade lines from credit bureau data; indicates borrower's\
@@ -843,8 +861,8 @@ sources:
         \ and credit score context\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Curr Balloon Flag
+        type: "Integer"
+    - name: "Curr Balloon Flag"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Curr Balloon Flag</column_name>\n        <purpose>Indicator\
         \ of whether there is a scheduled balloon payment for the loan.</purpose>\n\
@@ -874,8 +892,8 @@ sources:
         \ Loan Term are present</trigger>\n                <logic>\n             \
         \       Balloon Flag = 1 (true) if [Remaining Amortization Term] > ["
       dataType:
-        type: Boolean
-    - name: Curr CLTV
+        type: "Boolean"
+    - name: "Curr CLTV"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Curr CLTV</column_name>\n        <purpose>Current Combined\
         \ Loan-to-Value ratio; represents the sum of senior and junior unpaid principal\
@@ -887,8 +905,8 @@ sources:
         \ (current/updated/recent/latest indicators) AND (combined/CLTV variants);\
         \ excludes occupancy, original, junior/senior rank suffixes</header_logic>\n\
         \            <data_logic>High recognition if data values are numeric, fall\
-        \ within range 2–500 (raw percentage scale), and predominantly between 0.05–5\
-        \ or 5–500 (normalized/unnormalized percentage formats)</data_logic>\n   \
+        \ within range 2–500 (raw percentage scale), and predominantly between 0.05–\
+        5 or 5–500 (normalized/unnormalized percentage formats)</data_logic>\n   \
         \     </recognition_signals>\n        <transformation_rules>\n           \
         \ <rule>\n                <type>Rescale/Normalize</type>\n               \
         \ <condition>When value is numeric, non-missing, and in range (2, 500)</condition>\n\
@@ -898,8 +916,8 @@ sources:
         \  </transformation_rules>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: Curr LTV
+        type: "Integer"
+    - name: "Curr LTV"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Curr LTV</column_name>\n        <purpose>Current Loan-to-Value\
         \ ratio; represents current outstanding principal balance divided by current\
@@ -928,8 +946,8 @@ sources:
         \                <applies_when_original>true</applies_when_original>\n   \
         \         </transformation"
       dataType:
-        type: Integer
-    - name: Curr Loan Balance
+        type: "Integer"
+    - name: "Curr Loan Balance"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Curr Loan Balance</column_name>\n        <purpose>Unpaid\
         \ principal balance of the current loan, excluding deferred or non-interest\
@@ -961,8 +979,8 @@ sources:
         \        \n        <transformation_fallback_chain>\n            Priority 1:\
         \ Use [Unpaid Principal Amount] if current balance not"
       dataType:
-        type: Float
-    - name: Curr Loan Interest Rate
+        type: "Float"
+    - name: "Curr Loan Interest Rate"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Curr Loan Interest Rate</column_name>\n        <purpose>The\
         \ interest rate used to calculate the current principal and interest payment\
@@ -990,8 +1008,8 @@ sources:
         \                <condition>Value is numeric, non-null, and between 0.25 and\
         \ 25 (indicating percentage representation)</condition>\n                <result>"
       dataType:
-        type: Integer
-    - name: Curr Occupancy Status
+        type: "Integer"
+    - name: "Curr Occupancy Status"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Curr Occupancy Status</column_name>\n        <purpose>Latest\
         \ occupancy status indicating whether a property is occupied by owner, second\
@@ -1022,8 +1040,8 @@ sources:
         \        </rule>\n            <rule>\n                <condition>Current Occupancy\
         \ Status"
       dataType:
-        type: String
-    - name: Curr PI Payment
+        type: "String"
+    - name: "Curr PI Payment"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Curr PI Payment</column_name>\n        <purpose>Contractual\
         \ monthly Principal and Interest payment amount</purpose>\n        <data_type_and_format>Numeric,\
@@ -1040,17 +1058,17 @@ sources:
         , \"HPI\", \"secondary\", \"2nd\", or \"only\".\n                Alpha character\
         \ density (ratio of letters to total length) squared as confidence modifier.\n\
         \            </header_logic>\n            <data_logic>\n                High\
-        \ recognition if values are numeric and fall in typical payment range (101–10,000,\
-        \ with preference for non-integers).\n                Values above 50 receive\
-        \ moderate positive signal.\n                Values equal to 0 or missing\
-        \ receive minor positive signal (data quality indicator).\n              \
-        \  Non-numeric values and values below thresholds receive negative signals.\n\
-        \                Recognition score weighted by data density (ratio of non-empty\
-        \ cells).\n            </data_logic>\n        </recognition_signals>\n   \
-        \ </column_specification>\n</column_specifications>\n```"
+        \ recognition if values are numeric and fall in typical payment range (101–\
+        10,000, with preference for non-integers).\n                Values above 50\
+        \ receive moderate positive signal.\n                Values equal to 0 or\
+        \ missing receive minor positive signal (data quality indicator).\n      \
+        \          Non-numeric values and values below thresholds receive negative\
+        \ signals.\n                Recognition score weighted by data density (ratio\
+        \ of non-empty cells).\n            </data_logic>\n        </recognition_signals>\n\
+        \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Float
-    - name: Curr Payment Paid Thru Date
+        type: "Float"
+    - name: "Curr Payment Paid Thru Date"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Curr Payment Paid Thru Date</column_name>\n        <purpose>The\
         \ date through which all principal and interest payments have been paid up\
@@ -1079,8 +1097,8 @@ sources:
         \    <source_column>Interest Paid Through Date (self-referential)</source_column>\n\
         \                <confidence_threshold>0.9"
       dataType:
-        type: Date
-    - name: Curr Servicer Delinquency Status
+        type: "Date"
+    - name: "Curr Servicer Delinquency Status"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Curr Servicer Delinquency Status</column_name>\n      \
         \  <purpose>Represents the current delinquency status of a loan as reported\
@@ -1109,8 +1127,8 @@ sources:
         \ Status is missing</condition>\n                <action>Derive Loan Status\
         \ from BK/FC"
       dataType:
-        type: String
-    - name: Current FICO
+        type: "String"
+    - name: "Current FICO"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Current FICO</column_name>\n        <purpose>Current\
         \ FICO credit score of the borrower; represents the most recent credit rating\
@@ -1133,8 +1151,8 @@ sources:
         \ (1) is met</mode>\n            </rule>\n        </transformation_rules>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Current FICO Date
+        type: "Integer"
+    - name: "Current FICO Date"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Current FICO Date</column_name>\n        <purpose>The\
         \ date associated with the most recent FICO credit score for the primary borrower.</purpose>\n\
@@ -1152,8 +1170,8 @@ sources:
         \            </rule>\n        </transformation_rules>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Date
-    - name: Current Other Payment
+        type: "Date"
+    - name: "Current Other Payment"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Current Other Payment</column_name>\n        <purpose>Monetary\
         \ amount representing current other payments (non-primary payment obligations).</purpose>\n\
@@ -1171,8 +1189,8 @@ sources:
         \            </data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Float
-    - name: Current Payment Amount Due
+        type: "Float"
+    - name: "Current Payment Amount Due"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Current Payment Amount Due</column_name>\n        <purpose>The\
         \ monetary amount currently due as a payment obligation.</purpose>\n     \
@@ -1196,8 +1214,8 @@ sources:
         \ across all data points\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Float
-    - name: 'DD: Compliance Event Grade'
+        type: "Float"
+    - name: "DD: Compliance Event Grade"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>DD: Compliance Event Grade</column_name>\n        <purpose>Grade\
         \ or rating assigned to a compliance event identified during due diligence\
@@ -1210,8 +1228,8 @@ sources:
         \ categorical grades from the set: A, B, C, D, E.</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: String
-    - name: 'DD: Credit Event Grade'
+        type: "String"
+    - name: "DD: Credit Event Grade"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>DD: Credit Event Grade</column_name>\n        <purpose>Classification\
         \ or grading of credit events identified during due diligence review of a\
@@ -1226,8 +1244,8 @@ sources:
         \ B, C, D, E (ordinal grade categories)</expected_values>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: String
-    - name: 'DD: Overall Grade'
+        type: "String"
+    - name: "DD: Overall Grade"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>DD: Overall Grade</column_name>\n        <purpose>Overall\
         \ grade or rating assessment from due diligence process</purpose>\n      \
@@ -1239,8 +1257,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: 'DD: Property Event Grade'
+        type: "String"
+    - name: "DD: Property Event Grade"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>DD: Property Event Grade</column_name>\n        <purpose>Due\
         \ diligence assessment grade for a property event, used in loan review processes.</purpose>\n\
@@ -1255,8 +1273,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: DTI Ratio
+        type: "String"
+    - name: "DTI Ratio"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>DTI Ratio</column_name>\n        <purpose>Back-end debt-to-income\
         \ ratio; total monthly debt expense divided by total monthly income, used\
@@ -1285,8 +1303,8 @@ sources:
         \                <operation>Divide by 100</operation>\n                <inverse_operation>Multiply\
         \ by 100</inverse_operation>"
       dataType:
-        type: Integer
-    - name: Doc Type
+        type: "Integer"
+    - name: "Doc Type"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Doc Type</column_name>\n        <purpose>Documentation\
         \ level classification at loan origination (e.g., Full, Stated, Limited, No\
@@ -1314,8 +1332,8 @@ sources:
         \    Description: LP normalize Doc Types\n            </rule>\n          \
         \  <rule condition=\"has_named_tag('"
       dataType:
-        type: String
-    - name: Escrow Advance Balance
+        type: "String"
+    - name: "Escrow Advance Balance"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Escrow Advance Balance</column_name>\n        <purpose>Funds\
         \ advanced for taxes and insurance held in escrow account</purpose>\n    \
@@ -1338,8 +1356,8 @@ sources:
         \ outside normal range\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Float
-    - name: Escrow Flag
+        type: "Float"
+    - name: "Escrow Flag"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Escrow Flag</column_name>\n        <purpose>Indicates whether\
         \ homeownership expenses are paid by the borrower directly or through an escrow\
@@ -1360,8 +1378,8 @@ sources:
         \            </data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Boolean
-    - name: 'Financing: Advance Rate'
+        type: "Boolean"
+    - name: "Financing: Advance Rate"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Financing: Advance Rate</column_name>\n        <purpose>Advance\
         \ Rate for WAM (Warehouse) financing terms</purpose>\n        <data_type_and_format>Numeric</data_type_and_format>\n\
@@ -1371,8 +1389,8 @@ sources:
         \ (case-insensitive match)</header_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: First-time Home Buyer
+        type: "Integer"
+    - name: "First-time Home Buyer"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>First-time Home Buyer</column_name>\n        <purpose>Indicator\
         \ of whether the borrower is a first-time home buyer.</purpose>\n        <data_type_and_format>Boolean</data_type_and_format>\n\
@@ -1384,8 +1402,8 @@ sources:
         \ values carry reduced confidence weight</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Boolean
-    - name: Forbearance Type
+        type: "Boolean"
+    - name: "Forbearance Type"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Forbearance Type</column_name>\n        <purpose>Categorical\
         \ indicator of the type of forbearance granted on a student loan account.</purpose>\n\
@@ -1410,8 +1428,8 @@ sources:
         \ temporal and amount fields within the forbearance domain.</notes>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: String
-    - name: High Cost Flag
+        type: "String"
+    - name: "High Cost Flag"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>High Cost Flag</column_name>\n        <purpose>Indicator\
         \ of whether a loan is classified as a federal or state high cost loan.</purpose>\n\
@@ -1425,8 +1443,8 @@ sources:
         \ weighted by environmental scoring baseline.</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Boolean
-    - name: Init Fixed Payment Period
+        type: "Boolean"
+    - name: "Init Fixed Payment Period"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Init Fixed Payment Period</column_name>\n        <purpose>Specifies\
         \ the initial period during which fixed payments are applied (relevant to\
@@ -1437,8 +1455,8 @@ sources:
         \ (or related variants)</header_logic>\n        </recognition_signals>\n \
         \   </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Init Min Payment
+        type: "Integer"
+    - name: "Init Min Payment"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Init Min Payment</column_name>\n        <purpose>Initial\
         \ minimum payment amount for a loan or mortgage product.</purpose>\n     \
@@ -1449,8 +1467,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: Init NegAm Recast Period
+        type: "Integer"
+    - name: "Init NegAm Recast Period"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Init NegAm Recast Period</column_name>\n        <purpose>\n\
         \            Represents the initial negative amortization recast period, calculated\
@@ -1476,8 +1494,8 @@ sources:
         \   - Negam Initial Recast Date (source for calculation)\n        </dependencies>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Init Periodic Pay Cap
+        type: "Integer"
+    - name: "Init Periodic Pay Cap"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Init Periodic Pay Cap</column_name>\n        <purpose>Initial\
         \ periodic payment cap value for negative amortization loans</purpose>\n \
@@ -1489,8 +1507,8 @@ sources:
         \ cap percentages or amounts</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: LOC Draw Period
+        type: "Integer"
+    - name: "LOC Draw Period"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>LOC Draw Period</column_name>\n        <purpose>Duration\
         \ period during which funds can be drawn from a Line of Credit, expressed\
@@ -1509,8 +1527,8 @@ sources:
         \           </data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Lien Position
+        type: "Integer"
+    - name: "Lien Position"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Lien Position</column_name>\n        <purpose>Numeric indicator\
         \ of the loan's lien position in the mortgage hierarchy (1 = first lien, 2\
@@ -1538,8 +1556,8 @@ sources:
         \ (low threshold; apply if condition met)</threshold>\n                <self_referential>true\
         \ (transform uses same column as source)</self_referential>"
       dataType:
-        type: String
-    - name: Line of Credit Flag
+        type: "String"
+    - name: "Line of Credit Flag"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Line of Credit Flag</column_name>\n        <purpose>Indicator\
         \ that loan has a Line of Credit feature (HELOCs, Reverse mortgages, etc.)</purpose>\n\
@@ -1560,8 +1578,8 @@ sources:
         \ (aggregation mode: \"a\" = all rules must pass)</threshold>\n        </derivation_logic>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Boolean
-    - name: Liquid / Cash Reserves
+        type: "Boolean"
+    - name: "Liquid / Cash Reserves"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Liquid / Cash Reserves</column_name>\n        <purpose>Dollar\
         \ amount of remaining verified liquid assets available after settlement, excluding\
@@ -1583,8 +1601,8 @@ sources:
         \  </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Float
-    - name: Loan Purpose
+        type: "Float"
+    - name: "Loan Purpose"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Loan Purpose</column_name>\n        <purpose>Indicates\
         \ the purpose of the loan (e.g., purchase, refinance, cash-out).</purpose>\n\
@@ -1612,8 +1630,8 @@ sources:
         \ AMC Loan Purpose exact match lookup; retain original value if no match found</action>\n\
         \            </rule"
       dataType:
-        type: String
-    - name: MI Cert Num
+        type: "String"
+    - name: "MI Cert Num"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>MI Cert Num</column_name>\n        <purpose>The unique\
         \ number assigned to each individual loan insured under a mortgage insurance\
@@ -1630,8 +1648,8 @@ sources:
         \ header matching confidence score (env hscore)</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: String
-    - name: MI Company
+        type: "String"
+    - name: "MI Company"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>MI Company</column_name>\n        <purpose>The name of\
         \ the entity providing mortgage insurance for a loan.</purpose>\n        <data_type_and_format>String\
@@ -1651,8 +1669,8 @@ sources:
         \            </data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: String
-    - name: MI Coverage Pct
+        type: "String"
+    - name: "MI Coverage Pct"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>MI Coverage Pct</column_name>\n        <purpose>Mortgage\
         \ Insurance coverage percentage.</purpose>\n        <data_type_and_format>Numeric,\
@@ -1682,8 +1700,8 @@ sources:
         \                Operation: Divide by 100 to convert from percentage (1–50\
         \ range) to decimal ("
       dataType:
-        type: Integer
-    - name: Mod Capitalized Amount
+        type: "Integer"
+    - name: "Mod Capitalized Amount"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Mod Capitalized Amount</column_name>\n        <purpose>The\
         \ principal amount capitalized (added to loan balance) as part of a loan modification,\
@@ -1695,15 +1713,15 @@ sources:
         \ containing \"total\", \"capitaliz(ed)\", and \"amount\" variants. Alpha-to-length\
         \ ratio weighted as secondary signal.</header_logic>\n            <data_logic>High\
         \ recognition if:\n                - Values are numeric (positive signal)\n\
-        \                - Values fall within typical loan capitalization range: $50,000–$10,000,000\
-        \ (strong signal)\n                - Values above $10,000 (moderate signal)\n\
-        \                - Values of 0 or empty strings (weak positive signal)\n \
-        \               Non-numeric values reduce confidence. Pattern scoring averaged\
+        \                - Values fall within typical loan capitalization range: $50,000–\
+        $10,000,000 (strong signal)\n                - Values above $10,000 (moderate\
+        \ signal)\n                - Values of 0 or empty strings (weak positive signal)\n\
+        \                Non-numeric values reduce confidence. Pattern scoring averaged\
         \ across column.</data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Float
-    - name: Mod Deferred Amount
+        type: "Float"
+    - name: "Mod Deferred Amount"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Mod Deferred Amount</column_name>\n        <purpose>Dollar\
         \ amount of principal or payments deferred as part of a loan modification.</purpose>\n\
@@ -1723,8 +1741,8 @@ sources:
         \       </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Float
-    - name: Modification Flag
+        type: "Float"
+    - name: "Modification Flag"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Modification Flag</column_name>\n        <purpose>Indicator\
         \ that the loan has been modified.</purpose>\n        <data_type_and_format>Boolean</data_type_and_format>\n\
@@ -1753,8 +1771,8 @@ sources:
         \ as: if(isdate(Modification Date), 1, 0)</logic>\n                <description>Convert\
         \ modification"
       dataType:
-        type: Boolean
-    - name: Monthly Debt All Borrowers
+        type: "Boolean"
+    - name: "Monthly Debt All Borrowers"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Monthly Debt All Borrowers</column_name>\n        <purpose>Aggregate\
         \ monthly debt service obligations across all borrowers on the loan.</purpose>\n\
@@ -1778,8 +1796,8 @@ sources:
         \ by header recognition confidence.\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Float
-    - name: Months Since BK Discharge
+        type: "Float"
+    - name: "Months Since BK Discharge"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Months Since BK Discharge</column_name>\n        <purpose>Number\
         \ of months elapsed since any borrower was discharged from bankruptcy</purpose>\n\
@@ -1800,8 +1818,8 @@ sources:
         \ column\n            </data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Months Since FC Sale
+        type: "Integer"
+    - name: "Months Since FC Sale"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Months Since FC Sale</column_name>\n        <purpose>Number\
         \ of months elapsed since the foreclosure sale date.</purpose>\n        <data_type_and_format>Numeric\
@@ -1822,8 +1840,8 @@ sources:
         appraisal\", \"amount\".\n            </exclusion_rules>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: NegAm Limit
+        type: "Integer"
+    - name: "NegAm Limit"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>NegAm Limit</column_name>\n        <purpose>Negative\
         \ amortization limit, maximum, or cap threshold for a loan product</purpose>\n\
@@ -1840,8 +1858,8 @@ sources:
         \ ratio) and confirmed numeric type.\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Number Of Properties
+        type: "Integer"
+    - name: "Number Of Properties"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Number Of Properties</column_name>\n        <purpose>Count\
         \ of properties associated with a loan or borrower collateral portfolio</purpose>\n\
@@ -1861,8 +1879,8 @@ sources:
         \ header scoring context\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Number of Borrowers
+        type: "Integer"
+    - name: "Number of Borrowers"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Number of Borrowers</column_name>\n        <purpose>Count\
         \ of borrowers obligated to repay the note</purpose>\n        <data_type_and_format>Numeric\
@@ -1888,8 +1906,8 @@ sources:
         \      </transformation_logic>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: OptionARM Flag
+        type: "Integer"
+    - name: "OptionARM Flag"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>OptionARM Flag</column_name>\n        <purpose>Indicator\
         \ of whether a loan product is an Option ARM (Negative Amortization Adjustable\
@@ -1908,8 +1926,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Boolean
-    - name: Orig Amortization Term
+        type: "Boolean"
+    - name: "Orig Amortization Term"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig Amortization Term</column_name>\n        <purpose>The\
         \ number of months over which the loan principal and interest would be fully\
@@ -1940,8 +1958,8 @@ sources:
         \ Term] − [Orig Interest Only Term]</action>\n                <confidence_threshold>1.0\
         \ (certain)</confidence"
       dataType:
-        type: Integer
-    - name: Orig Amortization Type
+        type: "Integer"
+    - name: "Orig Amortization Type"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Orig Amortization Type</column_name>\n        <purpose>Identifies\
         \ the original amortization schedule type for a loan (Fixed, Adjustable/ARM,\
@@ -1969,8 +1987,8 @@ sources:
         \            </rule>\n            <rule priority=\"2\" condition=\"Value missing\
         \ AND ARM Margin exists AND ARM Initial"
       dataType:
-        type: String
-    - name: Orig Appraisal Date
+        type: "String"
+    - name: "Orig Appraisal Date"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig Appraisal Date</column_name>\n        <purpose>The\
         \ appraised value date of the property used to approve the loan at origination.</purpose>\n\
@@ -1997,8 +2015,8 @@ sources:
         \          </transformation>\n        </transformations>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Date
-    - name: Orig Appraisal Value
+        type: "Date"
+    - name: "Orig Appraisal Value"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig Appraisal Value</column_name>\n        <purpose>The\
         \ appraised value of the property used to approve the loan.</purpose>\n  \
@@ -2029,8 +2047,8 @@ sources:
         \ Confidence threshold: 0.5 (50%).\n                • Mode: Additive/augment.\n\
         \            </fall"
       dataType:
-        type: Float
-    - name: Orig CLTV
+        type: "Float"
+    - name: "Orig CLTV"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig CLTV</column_name>\n        <purpose>Combined Loan-to-Value\
         \ ratio; calculated as the sum of all loan liens divided by the lesser of\
@@ -2059,8 +2077,8 @@ sources:
         \ > 2 AND value < 500 AND column is not missing</condition>\n            \
         \    <operation>Divide by"
       dataType:
-        type: Integer
-    - name: Orig Channel
+        type: "Integer"
+    - name: "Orig Channel"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig Channel</column_name>\n        <purpose>The source\
         \ or channel through which the mortgage loan was originated (e.g., Retail,\
@@ -2078,8 +2096,8 @@ sources:
         \ channels</semantic_rules>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Orig First Payment Date
+        type: "String"
+    - name: "Orig First Payment Date"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Orig First Payment Date</column_name>\n        <purpose>The\
         \ date of the first scheduled payment to be made by the borrower as specified\
@@ -2107,8 +2125,8 @@ sources:
         \ + 1 month, Maturity Date)</logic>\n            </transformation>\n     \
         \       <transformation>\n                <description>Calculate from Orig"
       dataType:
-        type: Date
-    - name: Orig Interest Only Term
+        type: "Date"
+    - name: "Orig Interest Only Term"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig Interest Only Term</column_name>\n        <purpose>Original\
         \ interest-only period for a loan, measured in months. Applies to all loan\
@@ -2138,8 +2156,8 @@ sources:
         \          <derivation>Calculate as: Remaining Interest Only Term + Loan Age</derivation>\n\
         \                <note>Derives original IO term by adding"
       dataType:
-        type: Integer
-    - name: Orig Junior Loan Amount
+        type: "Integer"
+    - name: "Orig Junior Loan Amount"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig Junior Loan Amount</column_name>\n        <purpose>Combined\
         \ balance of subordinate liens (junior mortgages) at the time of origination\
@@ -2169,8 +2187,8 @@ sources:
         \     </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Float
-    - name: Orig LTV
+        type: "Float"
+    - name: "Orig LTV"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig LTV</column_name>\n        <purpose>Original Loan-to-Value\
         \ ratio; calculated as Original Loan Amount divided by the lesser of Original\
@@ -2201,8 +2219,8 @@ sources:
         \ (Orig Appraisal Value OR Orig Sales Price exists)</condition>\n        \
         \        <formula>\n                    ("
       dataType:
-        type: Integer
-    - name: Orig Loan Amount
+        type: "Integer"
+    - name: "Orig Loan Amount"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig Loan Amount</column_name>\n        <purpose>Dollar\
         \ amount of the loan as specified on the note at origination. For HELOCs,\
@@ -2224,13 +2242,13 @@ sources:
         \ squared\n            </header_logic>\n            <data_logic>\n       \
         \         • Strong signal if numeric values fall in typical loan origination\
         \ range: 50,000–10,000,000 (score 1.0 with +0.2 bonus if integer)\n      \
-        \          • Moderate signal if numeric values fall in secondary range: 10,000–50,000\
-        \ (score 0.5 with +0.2 bonus if integer)\n                • Weak signal if\
-        \ values are 0 or empty (score 0.1)\n                • Negative signal if\
-        \ non-numeric or mal"
+        \          • Moderate signal if numeric values fall in secondary range: 10,000–\
+        50,000 (score 0.5 with +0.2 bonus if integer)\n                • Weak signal\
+        \ if values are 0 or empty (score 0.1)\n                • Negative signal\
+        \ if non-numeric or mal"
       dataType:
-        type: Float
-    - name: Orig Loan Interest Rate
+        type: "Float"
+    - name: "Orig Loan Interest Rate"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Orig Loan Interest Rate</column_name>\n        <purpose>The\
         \ original note rate at loan origination</purpose>\n        <data_type_and_format>Numeric,\
@@ -2258,8 +2276,8 @@ sources:
         \ 0, non-missing, and within valid rate bounds\n                Scoring: High\
         \ recognition when majority of data conforms to expected ranges"
       dataType:
-        type: Integer
-    - name: Orig Loan Maturity Date
+        type: "Integer"
+    - name: "Orig Loan Maturity Date"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Orig Loan Maturity Date</column_name>\n        <purpose>The\
         \ original maturity date of the loan, calculated from loan origination parameters\
@@ -2286,8 +2304,8 @@ sources:
         >\n                <transformation>dateadd(\"months\", [Orig Loan Term] -\
         \ 1, [Orig First Payment Date])</transformation>\n                <confidence_threshold>0.9"
       dataType:
-        type: Date
-    - name: Orig Loan Term
+        type: "Date"
+    - name: "Orig Loan Term"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Orig Loan Term</column_name>\n        <purpose>The initial\
         \ number of months between loan origination and loan maturity date as specified\
@@ -2315,8 +2333,8 @@ sources:
         \ Date</action>\n                <confidence>0.99</confidence>\n         \
         \   </rule_1>\n            <rule_2>\n                <condition"
       dataType:
-        type: Integer
-    - name: Orig Pledged Assets
+        type: "Integer"
+    - name: "Orig Pledged Assets"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Orig Pledged Assets</column_name>\n        <purpose>The\
         \ total value of assets pledged as collateral for the loan at the time of\
@@ -2328,8 +2346,8 @@ sources:
         \ rules defined</data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Orig Sales Price
+        type: "Integer"
+    - name: "Orig Sales Price"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Orig Sales Price</column_name>\n        <purpose>The original\
         \ sales price of the property at time of purchase.</purpose>\n        <data_type_and_format>Numeric\
@@ -2350,8 +2368,8 @@ sources:
         \ preferred over decimals\n            </data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Float
-    - name: Original FICO
+        type: "Float"
+    - name: "Original FICO"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Original FICO</column_name>\n        <purpose>The original\
         \ FICO credit score used for loan qualification of the borrower.</purpose>\n\
@@ -2381,8 +2399,8 @@ sources:
         \                Threshold: 90% confidence required for transformation application.\n\
         \            </transformation_logic>\n            <derived_"
       dataType:
-        type: Integer
-    - name: Original FICO Date
+        type: "Integer"
+    - name: "Original FICO Date"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Original FICO Date</column_name>\n        <purpose>The\
         \ date on which the original FICO credit score was obtained or calculated\
@@ -2394,8 +2412,8 @@ sources:
         \ in raw data</data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Date
-    - name: Origination Discount Points ($)
+        type: "Date"
+    - name: "Origination Discount Points ($)"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Origination Discount Points ($)</column_name>\n       \
         \ <purpose>Amount paid to lender to increase effective yield and reduce borrower\
@@ -2418,8 +2436,8 @@ sources:
         \    • Often sparse/zero-filled in datasets\n        </semantic_constraints>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Float
-    - name: Origination Note Date
+        type: "Float"
+    - name: "Origination Note Date"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Origination Note Date</column_name>\n        <purpose>The\
         \ date on which the loan was originated (note date).</purpose>\n        <data_type_and_format>Date\
@@ -2446,8 +2464,8 @@ sources:
         \ First Payment Date minus 45 days</derivation>\n                <confidence>100%</confidence>\n\
         \            </rule_1>\n            <rule_2>"
       dataType:
-        type: Date
-    - name: Originator Loan Grade
+        type: "Date"
+    - name: "Originator Loan Grade"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Originator Loan Grade</column_name>\n        <purpose>Loan\
         \ grade assigned by the originator</purpose>\n        <data_type_and_format>String</data_type_and_format>\n\
@@ -2458,8 +2476,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Originator Name
+        type: "String"
+    - name: "Originator Name"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Originator Name</column_name>\n        <purpose>Entity\
         \ that lends funds to the borrower</purpose>\n        <data_type_and_format>String\
@@ -2489,8 +2507,8 @@ sources:
         \ numeric values (MLS numbers or similar)</condition>\n                <action>Normalize\
         \ using originator"
       dataType:
-        type: String
-    - name: Originator Program
+        type: "String"
+    - name: "Originator Program"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Originator Program</column_name>\n        <purpose>Identifies\
         \ the origination program or product type associated with the loan.</purpose>\n\
@@ -2506,8 +2524,8 @@ sources:
         \ keyword (negative indicator)\n            </header_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: String
-    - name: Pay History 12 Mths
+        type: "String"
+    - name: "Pay History 12 Mths"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Pay History 12 Mths</column_name>\n        <purpose>Encodes\
         \ the payment status or payment record for the past 12 months in string format</purpose>\n\
@@ -2520,8 +2538,8 @@ sources:
         \ of monthly payment statuses)</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: String
-    - name: Pay History 24 Mths
+        type: "String"
+    - name: "Pay History 24 Mths"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Pay History 24 Mths</column_name>\n        <purpose>Represents\
         \ payment status history over the past 24 months as a coded string</purpose>\n\
@@ -2541,8 +2559,8 @@ sources:
         \        </transformation>\n        </transformations>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: String
-    - name: Pay History Current for 24
+        type: "String"
+    - name: "Pay History Current for 24"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Pay History Current for 24</column_name>\n        <purpose>Indicator\
         \ of whether the loan has maintained current payment status for the last 24\
@@ -2560,8 +2578,8 @@ sources:
         \            </rule>\n        </transformation_rules>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Boolean
-    - name: Prepayment Penalty Description
+        type: "Boolean"
+    - name: "Prepayment Penalty Description"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Prepayment Penalty Description</column_name>\n     \
         \   <purpose>Textual description of how prepayment penalties are calculated\
@@ -2585,8 +2603,8 @@ sources:
         \ (e.g., \"hard\", \"soft\" penalty variants)</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: String
-    - name: Prepayment Penalty Hard Term
+        type: "String"
+    - name: "Prepayment Penalty Hard Term"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Prepayment Penalty Hard Term</column_name>\n        <purpose>Specifies\
         \ the hard term duration for prepayment penalties on the loan, indicating\
@@ -2611,8 +2629,8 @@ sources:
         \         </data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Prepayment Penalty Period
+        type: "Integer"
+    - name: "Prepayment Penalty Period"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Prepayment Penalty Period</column_name>\n        <purpose>The\
         \ total number of months during which a prepayment penalty may be in effect\
@@ -2638,8 +2656,8 @@ sources:
         \     </data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Property City
+        type: "Integer"
+    - name: "Property City"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Property City</column_name>\n        <purpose>The city\
         \ or municipality where the property is located.</purpose>\n        <data_type_and_format>String\
@@ -2670,8 +2688,8 @@ sources:
         \ AddressCityStateZip using regex pattern: extract second matched group (city\
         \ component) from \""
       dataType:
-        type: String
-    - name: Property State
+        type: "String"
+    - name: "Property State"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Property State</column_name>\n        <purpose>US state\
         \ location of the property being financed or evaluated.</purpose>\n      \
@@ -2702,8 +2720,8 @@ sources:
         \ State is missing AND city_state and CityStateZip are missing AND AddressCityStateZip\
         \ is not missing</condition>"
       dataType:
-        type: String
-    - name: Property Type
+        type: "String"
+    - name: "Property Type"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Property Type</column_name>\n        <purpose>Categorical\
         \ identifier of the property type (e.g., single-family, condo, PUD).</purpose>\n\
@@ -2732,8 +2750,8 @@ sources:
         \                <result>Maps Property Type values to standardized \"asf_property_type\"\
         \ codes</result>\n                <threshold>1</threshold>\n            </transformation>"
       dataType:
-        type: String
-    - name: Property Zip
+        type: "String"
+    - name: "Property Zip"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Property Zip</column_name>\n        <purpose>Postal\
         \ zip code of the property location.</purpose>\n        <data_type_and_format>String\
@@ -2764,8 +2782,8 @@ sources:
         \ group)</logic>\n                <priority>High (threshold: 1.0)</priority>\n\
         \            </rule>\n            <rule>"
       dataType:
-        type: String
-    - name: QM Status
+        type: "String"
+    - name: "QM Status"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>QM Status</column_name>\n        <purpose>QM Status\
         \ indicator</purpose>\n        <data_type_and_format>String</data_type_and_format>\n\
@@ -2778,8 +2796,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Qualification Method
+        type: "String"
+    - name: "Qualification Method"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Qualification Method</column_name>\n        <purpose>Type\
         \ of payment used to qualify the borrower for the loan.</purpose>\n      \
@@ -2790,8 +2808,8 @@ sources:
         \ 'method' in combination</header_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: String
-    - name: Rate Type
+        type: "String"
+    - name: "Rate Type"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Rate Type</column_name>\n        <purpose>Classification\
         \ of the interest rate structure type for the loan (e.g., Fixed, ARM, or other\
@@ -2813,8 +2831,8 @@ sources:
         \   </transformation_rule>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Relocation Flag
+        type: "String"
+    - name: "Relocation Flag"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Relocation Flag</column_name>\n        <purpose>Indicates\
         \ whether the loan is part of a corporate relocation program.</purpose>\n\
@@ -2826,8 +2844,8 @@ sources:
         \    </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Boolean
-    - name: Remaining Prepayment Penalty Period
+        type: "Boolean"
+    - name: "Remaining Prepayment Penalty Period"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Remaining Prepayment Penalty Period</column_name>\n\
         \        <purpose>Number of months that a prepayment penalty remains in effect\
@@ -2851,8 +2869,8 @@ sources:
         \    </rule>\n        </transformation_rules>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Self-Employment Flag
+        type: "Integer"
+    - name: "Self-Employment Flag"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Self-Employment Flag</column_name>\n        <purpose>Indicator\
         \ of whether the primary borrower is self-employed</purpose>\n        <data_type_and_format>Boolean\
@@ -2867,8 +2885,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Boolean
-    - name: Seller
+        type: "Boolean"
+    - name: "Seller"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Seller</column_name>\n        <purpose>Identifier for\
         \ the seller entity in a transaction or deal.</purpose>\n        <data_type_and_format>String</data_type_and_format>\n\
@@ -2880,8 +2898,8 @@ sources:
         \      </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Seller Loan ID
+        type: "String"
+    - name: "Seller Loan ID"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Seller Loan ID</column_name>\n        <purpose>Unique identifier\
         \ for a loan assigned or tracked by the seller entity</purpose>\n        <data_type_and_format>String</data_type_and_format>\n\
@@ -2911,8 +2929,8 @@ sources:
         \ Loan ID is missing AND WAM ID is present</condition>\n                <action>Substitute\
         \ WAM ID value</action"
       dataType:
-        type: String
-    - name: Seller Product Type
+        type: "String"
+    - name: "Seller Product Type"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Seller Product Type</column_name>\n        <purpose>Identifies\
         \ the product type of the loan as classified by the seller, typically derived\
@@ -2942,8 +2960,8 @@ sources:
         \ Use \"ARM\" prefix\n                    - Append original loan term converted\
         \ to 5-year"
       dataType:
-        type: String
-    - name: Senior Lien Current Balance
+        type: "String"
+    - name: "Senior Lien Current Balance"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Senior Lien Current Balance</column_name>\n        <purpose>Outstanding\
         \ balance amount on the senior (primary) mortgage lien at current point in\
@@ -2965,8 +2983,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Float
-    - name: Senior Lien Hybrid Period
+        type: "Float"
+    - name: "Senior Lien Hybrid Period"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Senior Lien Hybrid Period</column_name>\n        <purpose>Duration\
         \ of the hybrid period for the most senior lien, expressed in months</purpose>\n\
@@ -2980,8 +2998,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: Senior Lien Loan Type
+        type: "Integer"
+    - name: "Senior Lien Loan Type"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Senior Lien Loan Type</column_name>\n        <purpose>Classification\
         \ or identifier of the loan type associated with the senior lien position\
@@ -2995,8 +3013,8 @@ sources:
         \     </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Senior Lien Neg Am Limit
+        type: "String"
+    - name: "Senior Lien Neg Am Limit"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Senior Lien Neg Am Limit</column_name>\n        <purpose>Limit\
         \ amount for senior lien negative amortization</purpose>\n        <data_type_and_format>Numeric</data_type_and_format>\n\
@@ -3006,8 +3024,8 @@ sources:
         \ 'lien' (typically in combination)</header_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Senior Lien Original Balance
+        type: "Integer"
+    - name: "Senior Lien Original Balance"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Senior Lien Original Balance</column_name>\n       \
         \ <purpose>For subordinate mortgages, the aggregate original balance of all\
@@ -3026,8 +3044,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Float
-    - name: Servicer Name
+        type: "Float"
+    - name: "Servicer Name"
       description: "```\n<column_specifications>\n    <column_specification>\n   \
         \     <column_name>Servicer Name</column_name>\n        <purpose>Company that\
         \ has or will have the right to service the loan.</purpose>\n        <data_type_and_format>String\
@@ -3054,8 +3072,8 @@ sources:
         \ condition \"cooper: servicer name\" is not met (= 0)</condition>\n     \
         \           <output>Literal string: \"Cooper\"</output>"
       dataType:
-        type: String
-    - name: Short Term Rental Flag
+        type: "String"
+    - name: "Short Term Rental Flag"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Short Term Rental Flag</column_name>\n        <purpose>Indicator\
         \ of whether investment properties are already leased on a short-term basis.</purpose>\n\
@@ -3070,8 +3088,8 @@ sources:
         \            </rule>\n        </transformation_rules>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Boolean
-    - name: Subseq NegAm Recast Period
+        type: "Boolean"
+    - name: "Subseq NegAm Recast Period"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Subseq NegAm Recast Period</column_name>\n        <purpose>Identifies\
         \ the subsequent negative amortization recast period for a loan product.</purpose>\n\
@@ -3097,8 +3115,8 @@ sources:
         \ recast period applies.\n        </semantic_rules>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Subseq Payment Reset Period
+        type: "Integer"
+    - name: "Subseq Payment Reset Period"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Subseq Payment Reset Period</column_name>\n        <purpose>Represents\
         \ the period or interval for resetting subsequent payments in a negative amortization\
@@ -3110,8 +3128,8 @@ sources:
         \ signal.</header_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Subseq Periodic Pay Cap
+        type: "Integer"
+    - name: "Subseq Periodic Pay Cap"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Subseq Periodic Pay Cap</column_name>\n        <purpose>Captures\
         \ the periodic payment cap applied to subsequent payment periods in negative\
@@ -3123,8 +3141,8 @@ sources:
         \    </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Integer
-    - name: Svc Advance Method
+        type: "Integer"
+    - name: "Svc Advance Method"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Svc Advance Method</column_name>\n        <purpose>The\
         \ manner in which principal and/or interest are to be advanced by the servicer.</purpose>\n\
@@ -3136,8 +3154,8 @@ sources:
         \        </recognition_signals>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: String
-    - name: Svc Fee Amt ($)
+        type: "String"
+    - name: "Svc Fee Amt ($)"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Svc Fee Amt ($)</column_name>\n        <purpose>Aggregate\
         \ monthly fee paid to all servicers, expressed as a dollar amount.</purpose>\n\
@@ -3157,8 +3175,8 @@ sources:
         \     </data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Svc Fee Rate (%)
+        type: "Integer"
+    - name: "Svc Fee Rate (%)"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Svc Fee Rate (%)</column_name>\n        <purpose>Aggregate\
         \ monthly fee paid to all servicers, expressed as a percentage in decimal\
@@ -3184,8 +3202,8 @@ sources:
         \ by 100</operation>\n            <output_range>0.0005 to 0.025 (decimal)</output_range>\n\
         \            <is_original_form>true</is_"
       dataType:
-        type: Integer
-    - name: Total Combined Monthly Income
+        type: "Integer"
+    - name: "Total Combined Monthly Income"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Total Combined Monthly Income</column_name>\n      \
         \  <purpose>Monthly gross income of all borrowers combined</purpose>\n   \
@@ -3214,8 +3232,8 @@ sources:
         \        </transformation_rules>\n    </column_specification>\n</column_specifications>\n\
         ```"
       dataType:
-        type: Float
-    - name: Total Combined Wage Income
+        type: "Float"
+    - name: "Total Combined Wage Income"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Total Combined Wage Income</column_name>\n        <purpose>Monthly\
         \ income of all borrowers derived from base salary only.</purpose>\n     \
@@ -3228,8 +3246,8 @@ sources:
         \ the loan.</data_logic>\n        </recognition_signals>\n    </column_specification>\n\
         </column_specifications>\n```"
       dataType:
-        type: Integer
-    - name: Years in Home
+        type: "Integer"
+    - name: "Years in Home"
       description: "```xml\n<column_specifications>\n    <column_specification>\n\
         \        <column_name>Years in Home</column_name>\n        <purpose>Numeric\
         \ measure of the duration (in years) that the borrower has resided at their\
@@ -3246,5 +3264,5 @@ sources:
         \ array density to account for missing values.</data_logic>\n        </recognition_signals>\n\
         \    </column_specification>\n</column_specifications>\n```"
       dataType:
-        type: Integer
-    type: table
+        type: "Integer"
+    type: "table"
