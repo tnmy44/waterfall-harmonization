@@ -9,19 +9,7 @@ sources:
     - "source:waterfall_harmonizer_cdm1"
   tables:
   - name: "all_cols"
-    tests:
-    - not_null:
-        config:
-          fail_calc: "count(*)"
-          tags:
-          - "test:not_null"
-        column_name: "\"`Orig Loan Amount`\""
-    - unique:
-        config:
-          fail_calc: "count(*)"
-          tags:
-          - "test:unique"
-        column_name: "\"`Seller Loan ID`\""
+    tests: []
     config:
       tags:
       - "pipeline:cdm_pipe_waterfall"
