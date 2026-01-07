@@ -1,0 +1,28 @@
+---
+version: 2
+dataTests:
+- name: "assert"
+  description: "Assert that the given SQL expression is true for all values in a column"
+  arguments:
+  - name: "model"
+    type: "table"
+    description: "{\"ProphecyType\": \"table\"}"
+  - name: "expression"
+    type: "value"
+    description: "{\"ProphecyType\": \"value\"}"
+  - name: "column_name"
+    type: "column"
+    description: "{\"ProphecyType\": \"column\"}"
+  type: "generic"
+- name: "expression_is_true"
+  arguments:
+  - name: "model"
+    type: "table"
+    description: "{\"ProphecyType\": \"table\"}"
+  - name: "expression"
+    type: "value"
+    description: "{\"ProphecyType\": \"value\"}"
+  - name: "column_name"
+    type: "column"
+    description: "{\"ProphecyType\": \"column\"}"
+  type: "generic"

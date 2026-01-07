@@ -13,7 +13,39 @@
     "isTranspiledPipeline" : false,
     "publishDiagnosticMetrics" : false
   },
-  "processes" : { },
+  "processes" : {
+    "T1lw9HtUR8o1q5ahvRyf2$$KPcmyggKTmjHKbaRx7gar" : {
+      "id" : "T1lw9HtUR8o1q5ahvRyf2$$KPcmyggKTmjHKbaRx7gar",
+      "component" : "Dataset",
+      "metadata" : {
+        "label" : "all_cols",
+        "x" : -280,
+        "y" : -280,
+        "phase" : 0
+      },
+      "properties" : {
+        "writeOptions" : {
+          "writeMode" : "overwrite"
+        },
+        "table" : {
+          "name" : "all_cols",
+          "sourceName" : "waterfall_harmonizer_cdm",
+          "sourceType" : "Table"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "27MrK6BDIq9DFRjlGHYPg$$9LCjJZNk2A8p1y3ONKJXM",
+          "slug" : "in"
+        } ],
+        "outputs" : [ {
+          "id" : "Fj2Ake0k9Q-AKx1BQx3Kt$$OeZU9bLa6hcyvLMBZ50Df",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
   "connections" : [ ],
   "component" : "Pipeline"
 }
