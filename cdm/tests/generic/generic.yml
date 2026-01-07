@@ -1,8 +1,7 @@
 ---
 version: 2
 dataTests:
-- name: "assert"
-  description: "Assert that the given SQL expression is true for all values in a column"
+- name: "expression_is_true"
   arguments:
   - name: "model"
     type: "table"
@@ -14,7 +13,8 @@ dataTests:
     type: "column"
     description: "{\"ProphecyType\": \"column\"}"
   type: "generic"
-- name: "expression_is_true"
+- name: "assert"
+  description: "Assert that the given SQL expression is true for all values in a column"
   arguments:
   - name: "model"
     type: "table"
