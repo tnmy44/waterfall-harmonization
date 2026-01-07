@@ -1,6 +1,6 @@
 name: waterfall_cdm
 description: ''
-version: 0.0.8
+version: 0.0.9
 author: tanmay@prophecy.io
 language: sql
 buildSystem: ''
