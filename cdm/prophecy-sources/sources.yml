@@ -15,6 +15,7 @@ sources:
       - "pipeline:cdm_pipe_waterfall"
       - "table:all_cols"
       - "pipeline:wf_cdm_target"
+      - "pipeline:ref_pipe_waterfall"
     columns:
     - name: "4506T Flag"
       description: "Boolean indicator of whether a Transcript of Tax Return (received\
@@ -364,6 +365,15 @@ sources:
     - name: "DTI Ratio"
       description: "Back-end debt-to-income ratio; total monthly debt expense divided\
         \ by total monthly income, used for loan qualification"
+      tags:
+      - "column:DTI_Ratio"
+      tests:
+      - dbt_utils.expression_is_true:
+          config:
+            fail_calc: "count(*)"
+            tags:
+            - "test:dbt_utils.expression_is_true"
+          expression: ">0 and `DTI Ratio` < 100"
       quote: true
       dataType:
         type: "Integer"

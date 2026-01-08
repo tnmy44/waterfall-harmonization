@@ -21,7 +21,9 @@
         "label" : "all_cols",
         "x" : -280,
         "y" : -280,
-        "phase" : 0
+        "phase" : 0,
+        "comment" : "Overwrites the all_cols table in the waterfall harmonizer database with updated data.",
+        "autoUpdateComment" : true
       },
       "properties" : {
         "writeOptions" : {
